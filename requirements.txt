@@ -1,0 +1,17 @@
+# Core dependencies
+python-telegram-bot[ext]>=20.0
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+lxml>=4.6.0
+python-dotenv>=1.0.0
+
+# Async support
+aiohttp>=3.8.0
+
+# Optional dependencies for enhanced features
+selenium>=4.0.0  # For JavaScript-heavy sites (optional)
+fake-useragent>=1.0.0  # For rotating user agents (optional)
+
+# Note: The following are built-in Python modules and don't need installation:
+# sqlite3, asyncio, pathlib, concurrent.futures, logging, hashlib, re, json, 
+# datetime, typing, abc, random, time, signal, sys
