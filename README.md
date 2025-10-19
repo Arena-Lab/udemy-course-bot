@@ -1,10 +1,10 @@
 # 🎓 Udemy Course Bot
 
-A professional Telegram bot that automatically scrapes free Udemy courses from multiple sources and posts them to your Telegram channel with beautiful formatting and branding.
+A professional Telegram bot that automatically scrapes free Udemy courses from DiscUdemy and posts them to your Telegram channel with beautiful formatting and branding. Features advanced admin controls, scheduling, and automatic deployment to VPS with 24/7 operation.
 
 ## ✨ Features
 
-- **Multi-Source Scraping**: Scrapes from 5 major coupon websites
+- **Reliable Scraping**: Scrapes from DiscUdemy and enriches with real Udemy metadata
 - **Intelligent Duplicate Detection**: Prevents posting the same course multiple times
 - **Professional Branding**: Consistent, beautiful message formatting
 - **Fully Customizable**: Easy configuration via `.env` file
@@ -16,11 +16,7 @@ A professional Telegram bot that automatically scrapes free Udemy courses from m
 
 ## 🌐 Supported Sources
 
-1. **Real Discount** - Major aggregator with active monitoring
-2. **DiscUdemy** - Zero-broken-link technology
-3. **Udemy Freebies** - Popular free course source
-4. **YoFreeSamples** - Course listings with coupons
-5. **Coursesity** - 50,000+ free courses listed
+1. **DiscUdemy** - Zero-broken-link technology (currently enabled)
 
 ## 🚀 Quick Start
 
@@ -76,12 +72,8 @@ python main.py
 - `ENABLE_DUPLICATE_DETECTION`: Prevent duplicate posts (true/false)
 
 ### Source Control
-Enable/disable specific scrapers:
-- `ENABLE_REAL_DISCOUNT=true`
+Enable/disable the DiscUdemy scraper:
 - `ENABLE_DISCUDEMY=true`
-- `ENABLE_UDEMY_FREEBIES=true`
-- `ENABLE_YOFREESAMPLES=true`
-- `ENABLE_COURSESITY=true`
 
 ### Message Formatting
 Customize what information to include:
@@ -134,11 +126,7 @@ udemy-course-bot/
 │   └── settings.py         # Configuration management
 ├── scrapers/
 │   ├── base_scraper.py     # Base scraper class
-│   ├── real_discount_scraper.py
-│   ├── discudemy_scraper.py
-│   ├── udemy_freebies_scraper.py
-│   ├── yofreesamples_scraper.py
-│   └── coursesity_scraper.py
+│   └── discudemy_scraper.py
 ├── utils/
 │   ├── database.py         # Database operations
 │   ├── message_formatter.py # Message formatting

@@ -18,81 +18,92 @@ class MessageFormatter:
         self.config = Config()
     
     def format_course_message(self, course_data: Dict) -> str:
-        """Format a course into a branded Telegram message"""
+        """Format a course into a clean Telegram caption without inline URL (URL goes in button)."""
         try:
-            # Clean and prepare course data
             title = self._clean_text(course_data.get('title', 'Unknown Course'))
-            instructor = self._clean_text(course_data.get('instructor', 'Unknown Instructor'))
-            course_url = course_data.get('course_url', '')
-            
-            # Build the message
-            message_parts = []
-            
-            # Header with branding
-            message_parts.append(f"{Config.BOT_LOGO_EMOJI} <b>Free Courses With Certificates!</b>")
-            message_parts.append("")
-            
-            # Course title and instructor
-            if course_data.get('discount_percentage'):
-                discount_text = f"({course_data['discount_percentage']} Free) "
-            else:
-                discount_text = "(100% Free) "
-            
-            message_parts.append(f"{discount_text}<b>{title}</b>")
-            
-            if instructor and instructor != 'Unknown Instructor':
-                message_parts.append(f"👨‍🏫 <b>Instructor:</b> {instructor}")
-            
-            # Course details
+            instructor = self._clean_text(course_data.get('instructor', ''))
+            discount_percentage = course_data.get('discount_percentage', '100% OFF')
+            # Always synthesize a USD original price and strike it through (ignore provided)
+            original_price = None
+            rating = course_data.get('rating')
+            students = course_data.get('students_count')
+            language = course_data.get('language')
+            category = course_data.get('category')
+            description = course_data.get('description', '')
+
+            parts = []
+            # Header/title
+            parts.append(f"{Config.BOT_LOGO_EMOJI} <b>{title}</b>")
+            # Make FREE highly visible
+            parts.append("💯✨ <b>100% FREE</b> ✨")
+
+            # Optional short description
+            if description and len(description) > 20:
+                # keep it compact, show inside Telegram's quote block
+                if len(description) > 240:
+                    description = description[:240] + "..."
+                parts.append("")
+                parts.append(f"<blockquote>{self._clean_text(description)}</blockquote>")
+
+            # Details block
             details = []
-            
-            if Config.MESSAGE_OPTIONS['include_rating'] and course_data.get('rating'):
-                rating = course_data['rating']
+            if instructor:
+                details.append(f"👨‍🏫 <b>Instructor:</b> {instructor}")
+
+            # Price line: always show strikethrough with a synthesized USD price
+            if not original_price:
+                original_price = self._synth_price()
+            details.append(f"💰 <b>Price:</b> <s>{original_price}</s> ➜ <b>FREE</b>")
+
+            if rating:
                 stars = self._get_star_rating(rating)
-                details.append(f"⭐ <b>Rating:</b> {rating}/5 {stars}")
-            
-            if Config.MESSAGE_OPTIONS['include_students'] and course_data.get('students_count'):
-                students = self._format_number(course_data['students_count'])
-                details.append(f"👥 <b>Students:</b> {students}")
-            
-            if Config.MESSAGE_OPTIONS['include_duration'] and course_data.get('duration'):
-                details.append(f"⏱️ <b>Duration:</b> {course_data['duration']}")
-            
-            if Config.MESSAGE_OPTIONS['include_language'] and course_data.get('language'):
-                details.append(f"🌐 <b>Language:</b> {course_data['language']}")
-            
-            if course_data.get('category'):
-                details.append(f"📚 <b>Category:</b> {course_data['category']}")
-            
-            if Config.MESSAGE_OPTIONS['include_last_updated'] and course_data.get('last_updated'):
-                details.append(f"🔄 <b>Last Updated:</b> {course_data['last_updated']}")
-            
-            # Add details to message
+                try:
+                    rating_fmt = f"{float(rating):.1f}"
+                except Exception:
+                    rating_fmt = str(rating)
+                details.append(f"⭐ <b>Rating:</b> {rating_fmt}/5 {stars}")
+
+            if students:
+                details.append(f"👥 <b>Students:</b> {self._format_number(students)}")
+
+            if language:
+                details.append(f"🌐 <b>Language:</b> {language}")
+
+            if category:
+                details.append(f"📚 <b>Category:</b> {category}")
+
             if details:
-                message_parts.append("")
-                message_parts.extend(details)
-            
-            # Enrollment link
-            message_parts.append("")
-            message_parts.append(f"🔗 <b>Enroll Link➤</b> {course_url}")
-            
-            # Branding footer
-            message_parts.append("")
-            message_parts.append(f"🔥<b>{Config.SECRET_CHANNEL_TEXT}</b>")
-            message_parts.append(f"{Config.INVITE_FRIENDS_TEXT} {Config.CHANNEL_LINK}")
-            
-            return "\n".join(message_parts)
-            
+                parts.append("")
+                parts.extend(details)
+
+            # Footer: channel grid (2 columns) + invite line
+            parts.append("")
+            parts.append("🧭 <b>Explore our channels</b>")
+            parts.append("• 🛡️ <b><a href=\"https://t.me/+Te_QWfS6W99mNjA1\">Hacking</a></b> | • 🧠 <b><a href=\"https://t.me/+5AF4k2itls1iYTM9\">Free AI Tools</a></b>")
+            parts.append("• ⚡ <b><a href=\"https://t.me/+6tALVTxVuYMzNjdl\">Quick Deals</a></b> | • 📣 <b><a href=\"https://t.me/+RZf4mx2BiZhhMDdl\">Marketing Bot</a></b>")
+            parts.append("• 🤖 <b><a href=\"https://t.me/AlienxSaver\">Free Bots</a></b> | • 💰 <b><a href=\"https://t.me/+kzHBAvWrS5hiOTg1\">Earning Channel</a></b>")
+            parts.append("")
+            parts.append("👥 <b>Invite friends:</b> 👉 <a href=\"https://t.me/udemyzap\">@udemyzap</a>")
+
+            return "\n".join(parts)
+
         except Exception as e:
             logger.error(f"Error formatting course message: {e}")
             return self._get_error_message(course_data)
     
     def create_inline_keyboard(self, course_url: str):
-        """Create inline keyboard with enroll button"""
+        """Create inline keyboard with monetized enroll button"""
         from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+        from urllib.parse import quote
+        
+        # Base URL is configurable to support local testing (e.g., http://127.0.0.1:8000)
+        base = getattr(Config, 'QUICKTRENDS_BASE_URL', 'https://quicktrends.in').rstrip('/')
+        # Use explicit go.php so it works without Apache rewrites locally
+        monetized_url = f"{base}/go.php?u={quote(course_url)}"
+        
         return InlineKeyboardMarkup([
-            [InlineKeyboardButton("🎓 Enroll Now", url=course_url)]
-        ])
+            [InlineKeyboardButton("🚀 Enroll Free", url=monetized_url)]]
+        )
     
     def format_stats_message(self, stats: Dict) -> str:
         """Format statistics message for admin"""
@@ -176,15 +187,21 @@ class MessageFormatter:
                 return str(num)
         except:
             return str(number)
+
+    def _synth_price(self) -> str:
+        """Generate a realistic original price when real one isn't available."""
+        try:
+            import random
+            # Common Udemy price points
+            prices = ["$19.99", "$49.99", "$69.99", "$89.99", "$129.99", "$199.99", "$249.99"]
+            return random.choice(prices)
+        except Exception:
+            return "$99.99"
     
     def _format_source_name(self, source: str) -> str:
         """Format source website name for display"""
         source_names = {
-            'real_discount': 'Real Discount',
-            'discudemy': 'DiscUdemy',
-            'udemy_freebies': 'Udemy Freebies',
-            'yofreesamples': 'YoFreeSamples',
-            'coursesity': 'Coursesity'
+            'discudemy': 'DiscUdemy'
         }
         return source_names.get(source, source.title())
     
@@ -194,34 +211,17 @@ class MessageFormatter:
         return datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     
     def _get_error_message(self, course_data: Dict) -> str:
-        """Generate a basic error message when formatting fails"""
+        """Generate a basic error message when formatting fails (HTML)"""
         title = course_data.get('title', 'Unknown Course')
         url = course_data.get('course_url', '#')
-        
-        return f"""
-{Config.BOT_LOGO_EMOJI} **Free Course Alert!**
-
-**{title}**
-
-🔗 **Enroll Link➤** {url}
-
-🔥**{Config.SECRET_CHANNEL_TEXT}**
-{Config.INVITE_FRIENDS_TEXT} {Config.CHANNEL_LINK}
-        """.strip()
-    
-    def create_inline_keyboard(self, course_url: str) -> Dict:
-        """Create inline keyboard for course message"""
-        return {
-            "inline_keyboard": [
-                [
-                    {
-                        "text": "🎓 Enroll Now",
-                        "url": course_url
-                    },
-                    {
-                        "text": "📢 Join Channel",
-                        "url": Config.CHANNEL_LINK
-                    }
-                ]
-            ]
-        }
+        return (
+            f"{Config.BOT_LOGO_EMOJI} <b>Free Course Alert!</b>\n\n"
+            f"<b>{self._clean_text(title)}</b>\n"
+            f"💯✨ <b>100% FREE</b> ✨\n\n"
+            f"🔗 <b>Enroll Link➤</b> {url}\n\n"
+            f"🧭 <b>Explore our channels</b>\n"
+            f"• 🛡️ <b><a href=\"https://t.me/+Te_QWfS6W99mNjA1\">Hacking</a></b> | • 🧠 <b><a href=\"https://t.me/+5AF4k2itls1iYTM9\">Free AI Tools</a></b>\n"
+            f"• ⚡ <b><a href=\"https://t.me/+6tALVTxVuYMzNjdl\">Quick Deals</a></b> | • 📣 <b><a href=\"https://t.me/+RZf4mx2BiZhhMDdl\">Marketing Bot</a></b>\n"
+            f"• 🤖 <b><a href=\"https://t.me/AlienxSaver\">Free Bots</a></b> | • 💰 <b><a href=\"https://t.me/+kzHBAvWrS5hiOTg1\">Earning Channel</a></b>\n\n"
+            f"👥 <b>Invite friends:</b> 👉 <a href=\"https://t.me/udemyzap\">@udemyzap</a>"
+        ).strip()

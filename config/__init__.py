@@ -1,6 +1,6 @@
 """
 Configuration package initialization
 """
-from .settings import Config, SCRAPER_URLS, COURSE_CATEGORIES
+from .settings import Config
 
-__all__ = ['Config', 'SCRAPER_URLS', 'COURSE_CATEGORIES']
+__all__ = ['Config']

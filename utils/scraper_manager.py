@@ -8,13 +8,8 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config.settings import Config
-from scrapers.real_discount_scraper import RealDiscountScraper
 from scrapers.discudemy_scraper import DiscUdemyScraper
-from scrapers.udemy_freebies_scraper import UdemyFreebiesScraper
-from scrapers.yofreesamples_scraper import YoFreeSamplesScraper
-from scrapers.coursesity_scraper import CoursesityScraper
-from scrapers.tutorialbar_scraper import TutorialBarScraper
-from scrapers.freebiesglobal_scraper import FreebiesGlobalScraper
+from scrapers.base_scraper import BaseScraper
 
 logger = logging.getLogger(__name__)
 
@@ -28,26 +23,8 @@ class ScraperManager:
         """Initialize all enabled scrapers"""
         scrapers = {}
         
-        if Config.SCRAPERS.get('real_discount', False):
-            scrapers['real_discount'] = RealDiscountScraper()
-            
         if Config.SCRAPERS.get('discudemy', False):
             scrapers['discudemy'] = DiscUdemyScraper()
-            
-        if Config.SCRAPERS.get('udemy_freebies', False):
-            scrapers['udemy_freebies'] = UdemyFreebiesScraper()
-            
-        if Config.SCRAPERS.get('yofreesamples', False):
-            scrapers['yofreesamples'] = YoFreeSamplesScraper()
-            
-        if Config.SCRAPERS.get('coursesity', False):
-            scrapers['coursesity'] = CoursesityScraper()
-            
-        if Config.SCRAPERS.get('tutorialbar', False):
-            scrapers['tutorialbar'] = TutorialBarScraper()
-            
-        if Config.SCRAPERS.get('freebiesglobal', False):
-            scrapers['freebiesglobal'] = FreebiesGlobalScraper()
         
         logger.info(f"Initialized {len(scrapers)} scrapers: {list(scrapers.keys())}")
         return scrapers
@@ -139,7 +116,11 @@ class ScraperManager:
         
         return test_results
     
-    def get_enabled_scrapers(self) -> List[str]:
+    def get_enabled_scrapers(self) -> List[BaseScraper]:
+        """Get list of enabled scraper objects"""
+        return list(self.scrapers.values())
+
+    def get_enabled_scraper_names(self) -> List[str]:
         """Get list of enabled scraper names"""
         return list(self.scrapers.keys())
     
@@ -152,11 +133,7 @@ class ScraperManager:
     def enable_scraper(self, scraper_name: str):
         """Enable a specific scraper"""
         scraper_classes = {
-            'real_discount': RealDiscountScraper,
-            'discudemy': DiscUdemyScraper,
-            'udemy_freebies': UdemyFreebiesScraper,
-            'yofreesamples': YoFreeSamplesScraper,
-            'coursesity': CoursesityScraper
+            'discudemy': DiscUdemyScraper
         }
         
         if scraper_name in scraper_classes and scraper_name not in self.scrapers:
