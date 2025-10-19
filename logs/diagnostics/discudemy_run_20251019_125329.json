@@ -1,0 +1,51 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 1,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "AI for Business Analysts",
+          "url": "https://www.udemy.com/course/ai-for-business-analysts/?couponCode=5BC1D7A0E2C869FB5FD4"
+        },
+        {
+          "title": "SAFe: General Overview course",
+          "url": "https://www.udemy.com/course/safe-general-overview-course-aece/?couponCode=23CB912C859ED18F32DD"
+        },
+        {
+          "title": "Mastering Adobe Premiere Pro CC: From Beginner to Pro Editor",
+          "url": "https://www.udemy.com/course/mastering-adobe-premiere-pro-cc-from-beginner-to-pro-editor/?couponCode=9557779B49086FE3B50A"
+        },
+        {
+          "title": "Essential After Effects: From Beginner to Motion Master",
+          "url": "https://www.udemy.com/course/essential-after-effects-from-beginner-to-motion-master/?couponCode=5FF0522279A68599FCDC"
+        },
+        {
+          "title": "Learn Graphic Design with Photoshop Illustrator and InDesign",
+          "url": "https://www.udemy.com/course/graphic-design-masterclass-adobe-photoshop-illustrator-indesign-canva/?couponCode=0EBED996BB77D780416D"
+        }
+      ]
+    }
+  ]
+}

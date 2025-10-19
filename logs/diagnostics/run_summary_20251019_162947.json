@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-10-19T16:29:47.237547",
+  "max_per_source": 60,
+  "total_scraped": 60,
+  "new_courses": 0,
+  "duplicates": 60,
+  "db_stats": {
+    "total_courses": 150,
+    "posted_courses": 134,
+    "pending_courses": 16,
+    "source_breakdown": {
+      "discudemy": 150
+    }
+  },
+  "per_scraper": {
+    "discudemy": {
+      "name": "discudemy",
+      "courses_scraped": 0,
+      "errors_count": 0,
+      "success_rate": 0.0
+    }
+  }
+}

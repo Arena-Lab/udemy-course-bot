@@ -1,0 +1,86 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 1,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Professional Diploma in Advertising and Public Relations",
+          "url": "https://www.udemy.com/course/professional-diploma-in-advertising-and-public-relations/?couponCode=D3560D0BAE267308542A"
+        },
+        {
+          "title": "Build 13 Projects with PHP MySQL Bootstrap and PDO",
+          "url": "https://www.udemy.com/course/build-13-projects-with-php-mysql-bootstrap-and-pdo/?couponCode=13PROJECTS53"
+        },
+        {
+          "title": "Complete Flutter Guide 2025: Build Android, iOS and Web apps",
+          "url": "https://www.udemy.com/course/flutter-the-guide-to-build-android-ios-and-web-apps/?couponCode=D4F5CF0943ADAD4707E5"
+        },
+        {
+          "title": "Director de RRHH (Recursos Humanos): Curso 2025 [ES+]",
+          "url": "https://www.udemy.com/course/director-de-rrhh-curso-en-linea-en-espanol/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "ChatGPT for HR AI Powered Automation Talent Management [EN]",
+          "url": "https://www.udemy.com/course/chatgpt-for-hr-and-recruiters-12-academic-hours-200-tools/?couponCode=PAPAHR_OCT_IV"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/2",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Company Culture Build Tesla and Starbucks Organization [EN]",
+          "url": "https://www.udemy.com/course/build-winning-corporate-culture-drive-success-with-strategy/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "HR Generalist Human Resources SHRM Certification Prep [EN]",
+          "url": "https://www.udemy.com/course/hr-generalist/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "Compensation and Benefits (C&B) in Total Rewards System [EN]",
+          "url": "https://www.udemy.com/course/compensation-and-benefits/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "Delegation Mastery Lead Smarter Work Less Achieve More [EN]",
+          "url": "https://www.udemy.com/course/effective-delegation-new/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "OKR for managers and employees: Objectivesб Key Results [EN]",
+          "url": "https://www.udemy.com/course/okr-mastery/?couponCode=PAPAHR_OCT_IV"
+        }
+      ]
+    }
+  ]
+}

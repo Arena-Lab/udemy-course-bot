@@ -1,0 +1,51 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 10,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Director de RRHH (Recursos Humanos): Curso 2025 [ES+]",
+          "url": "https://www.udemy.com/course/director-de-rrhh-curso-en-linea-en-espanol/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "ChatGPT for HR AI Powered Automation Talent Management [EN]",
+          "url": "https://www.udemy.com/course/chatgpt-for-hr-and-recruiters-12-academic-hours-200-tools/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "Social Recruiting: Facebook, Github, LinkedIn Recruiter [EN]",
+          "url": "https://www.udemy.com/course/social-media-recruitment-from-linkedin-to-facebook-github/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "People Partner HR certification program for future HRBP [EN]",
+          "url": "https://www.udemy.com/course/become-a-certified-people-partner-your-path-to-a-rewarding/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "HR Trends 2025-2030: Future Strategies & Innovations [EN]",
+          "url": "https://www.udemy.com/course/future-of-hr-master-2025-2030-trends-and-strategies/?couponCode=PAPAHR_OCT_IV"
+        }
+      ]
+    }
+  ]
+}

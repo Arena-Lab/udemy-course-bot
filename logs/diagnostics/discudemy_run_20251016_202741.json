@@ -1,0 +1,121 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 28,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Mastering Lean Software Development - Intensive Course",
+          "url": "https://www.udemy.com/course/mastering-lean-software-development-intensive-course/?couponCode=5198DAC2"
+        },
+        {
+          "title": "Python And Flask Demonstrations Practice Course",
+          "url": "https://www.udemy.com/course/python-and-flask-only-demonstration-course/?couponCode=EB88945D3DE9C2E56CF3"
+        },
+        {
+          "title": "Sports Marketing: Principles & Strategies",
+          "url": "https://www.udemy.com/course/sports-marketing/?couponCode=SFREE_26"
+        },
+        {
+          "title": "PowerPoint from Zero to Pro - الباوربوينت من الصفر للاحتراف",
+          "url": "https://www.udemy.com/course/powerpointwithabdou/?couponCode=POWERPOINT1610"
+        },
+        {
+          "title": "28 Days to Master AI Art Generation System",
+          "url": "https://www.udemy.com/course/28-days-to-master-ai-art-generation-system/?couponCode=16OCTOBER2025"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/29",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "PHP with MySQL: Build Complete Tours and Travel Website",
+          "url": "https://www.udemy.com/course/php-with-mysql-2023-build-complete-tours-and-travel-website/?couponCode=PHPTOURS56"
+        },
+        {
+          "title": "Keys to speak English as a native speaker for Arabic Speaker",
+          "url": "https://www.udemy.com/course/keys-to-speak-english-as-a-native-speaker-for-arabic-speaker/?couponCode=E5C82A13026A3E91FEAF"
+        },
+        {
+          "title": "Full-Stack HTML CSS JS AI PYTHON DJANGO PHP LARAVEL LIVEWIRE",
+          "url": "https://www.udemy.com/course/full-stack-web-developer-from-html-to-laravel-for-beginners/?couponCode=F6F5E2F8201BE6936452"
+        },
+        {
+          "title": "Build Portfolio Website in Laravel 11 for Beginners",
+          "url": "https://www.udemy.com/course/laravel-2025-real-project-portfolio-and-blog-for-beginners/?couponCode=75AB17B086B97A6DDA33"
+        },
+        {
+          "title": "Build Blog Website in Laravel 11 for Beginners",
+          "url": "https://www.udemy.com/course/build-blog-website-in-laravel-11-for-beginners/?couponCode=1C26D8122CB70F1B4DF8"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/30",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "JavaScript Fundamentals to Advanced: Full Stack Development",
+          "url": "https://www.udemy.com/course/javascript-fundamentals-to-advanced-full-stack-development/?couponCode=10AA044629C81E8C6457"
+        },
+        {
+          "title": "MS Excel Masterclass for Job Seekers Accounting Success",
+          "url": "https://www.udemy.com/course/ms-excel-masterclass-for-job-seekers-accounting-success/?couponCode=3307EA909ACD7ADC8A78"
+        },
+        {
+          "title": "PowerShell Functions Master Class",
+          "url": "https://www.udemy.com/course/powershell-functions-master-class/?couponCode=229A16AE0998256F6F25"
+        },
+        {
+          "title": "AI for Product Management & Innovation",
+          "url": "https://www.udemy.com/course/ai-for-product-management-innovation-r/?couponCode=CAF6FB226292FA124217"
+        },
+        {
+          "title": "Advanced Certificate in Financial Analysis and Management",
+          "url": "https://www.udemy.com/course/advanced-certificate-in-financial-analysis-and-management/?couponCode=8712BDEBC5419FBE9162"
+        }
+      ]
+    }
+  ]
+}

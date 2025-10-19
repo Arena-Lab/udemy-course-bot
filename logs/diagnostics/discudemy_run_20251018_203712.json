@@ -1,0 +1,86 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 52,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 12,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Introduction To Bug Bounties - Main Web App Hacking",
+          "url": "https://www.udemy.com/course/uncle-rats-ultimate-bug-bounty-guide-part-1-2025/?couponCode=F530AE7A9BF01E2613FD"
+        },
+        {
+          "title": "H2O AI Agents : From Theory to Practice",
+          "url": "https://www.udemy.com/course/h2o-ai-agents-from-theory-to-practice/?couponCode=OCT-FREE25"
+        },
+        {
+          "title": "H2O Gen AI Ecosystem Overview - Level 1",
+          "url": "https://www.udemy.com/course/h2o-ecosystem-overview-level-1/?couponCode=OCT-FREE25"
+        },
+        {
+          "title": "Advanced Program in Product & CX Management and Development",
+          "url": "https://www.udemy.com/course/professional-diploma-in-product-management/?couponCode=7CBB79FE64163F84D7ED"
+        },
+        {
+          "title": "Executive Diploma in Technology Management",
+          "url": "https://www.udemy.com/course/executive-diploma-in-technology-management/?couponCode=26753F98BA85C83CB114"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/53",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Free React JS Tutorial - React.js for Absolute Beginners: 3D Weather Application",
+          "url": "https://www.udemy.com/course/reactjs-for-absolute-beginners-create-your-first-projects/"
+        },
+        {
+          "title": "Free Full Stack Web Development Tutorial - Appointment Booking Application in React native",
+          "url": "https://www.udemy.com/course/appointment-booking-application-in-react-native/"
+        },
+        {
+          "title": "Free Blockchain Tutorial - An Intro to BitBadges and Multi-Chain DApp Development",
+          "url": "https://www.udemy.com/course/multichain-dapps/"
+        },
+        {
+          "title": "Blender for Dental: Guida ai Modelli e Strumenti Base",
+          "url": "https://www.udemy.com/course/blender-for-dental-guida-ai-modelli-e-strumenti-base/"
+        },
+        {
+          "title": "Security Awareness Training 2025 CyberSecurity Best Practice",
+          "url": "https://www.udemy.com/course/security-awareness-training-cyber-security-for-everyone/?couponCode=9CCDAC62AAC7F3C500DB"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 1,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Executive Diploma in Leadership and Management",
+          "url": "https://www.udemy.com/course/executive-diploma-in-leadership-and-management/?couponCode=22F0CBE43FF0F142DF1E"
+        },
+        {
+          "title": "Adobe Illustrator for Everyone: Design Like a Pro",
+          "url": "https://www.udemy.com/course/adobe-illustrator-for-everyone-design-like-a-pro/?couponCode=75AD7B39610FA2C7B466"
+        },
+        {
+          "title": "Learn Canva for Advance Graphics Design",
+          "url": "https://www.udemy.com/course/learn-canva-for-advance-graphics-design/?couponCode=B078FC2B02F64F227926"
+        },
+        {
+          "title": "T-Shirt Design Bootcamp: Photoshop, Illustrator & Canva",
+          "url": "https://www.udemy.com/course/t-shirt-design-bootcamp-photoshop-illustrator-canva/?couponCode=53F0E4C554535255A011"
+        },
+        {
+          "title": "AI for Business Analysts",
+          "url": "https://www.udemy.com/course/ai-for-business-analysts/?couponCode=5BC1D7A0E2C869FB5FD4"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/2",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "The Complete Microsoft Word Course: Learn Word Step by Step",
+          "url": "https://www.udemy.com/course/the-complete-microsoft-word-course-learn-word-step-by-step/?couponCode=BFB162B06A7E8E9EF42D"
+        },
+        {
+          "title": "The Complete Python Developer: From Zero to Mastery",
+          "url": "https://www.udemy.com/course/the-complete-python-developer-from-zero-to-mastery/?couponCode=53CB5F69F6EE62945126"
+        },
+        {
+          "title": "Master MongoDB: Cloud Based NoSQL Database Management",
+          "url": "https://www.udemy.com/course/master-mongodb-cloud-based-nosql-database-management/?couponCode=3E04347E7A83C506B176"
+        },
+        {
+          "title": "Hands On Excel VBA Macros: Automate Daily Tasks in Minutes",
+          "url": "https://www.udemy.com/course/hands-on-excel-vba-macros-automate-daily-tasks-in-minutes/?couponCode=9A901D58DE8C58CC31B7"
+        },
+        {
+          "title": "Next.js: Build Dynamic, Fast & Scalable Web Applications",
+          "url": "https://www.udemy.com/course/nextjs-build-dynamic-fast-scalable-web-applications/?couponCode=683D1E13852C326F238C"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/3",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Network Mastery for Ethical Hackers",
+          "url": "https://www.udemy.com/course/network-mastery-for-ethical-hackers/?couponCode=1E1A6C275492F6DB50F6"
+        },
+        {
+          "title": "Web Development Bootcamp with HTML CSS PHP MySQL Wordpress",
+          "url": "https://www.udemy.com/course/web-development-bootcamp-with-html-css-php-mysql-wordpress/?couponCode=7B18AF4947A29E626373"
+        },
+        {
+          "title": "UIUX with Figma and Adobe XD",
+          "url": "https://www.udemy.com/course/uiux-with-figma-and-adobe-xd/?couponCode=2BFDD27A296F3FC17C45"
+        },
+        {
+          "title": "Youtube Masterclass With Video Editing and Graphics Design",
+          "url": "https://www.udemy.com/course/youtube-masterclass-with-video-editing-and-graphics-design/?couponCode=B51F2B9E7F380025563B"
+        },
+        {
+          "title": "Microsoft Excel: Formulas & Functions with Charts & Graphs",
+          "url": "https://www.udemy.com/course/microsoft-excel-formulas-functions-with-charts-graphs/?couponCode=BISMILLAH-21"
+        }
+      ]
+    }
+  ]
+}

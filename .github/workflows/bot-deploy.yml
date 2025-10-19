@@ -1,0 +1,122 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: Deploy Bot and Website to VPS
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      BOT_ENV: ${{ secrets.BOT_ENV }}
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_PASS: ${{ secrets.VPS_PASS }}
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ env.VPS_HOST }}
+          username: ${{ env.VPS_USER }}
+          password: ${{ env.VPS_PASS }}
+          envs: BOT_ENV
+          script: |
+            set -euo pipefail
+            REPO_URL="${{ github.server_url }}/${{ github.repository }}.git"
+            
+            # Clone/update bot code
+            if [ ! -d /opt/udemybot/.git ]; then
+              mkdir -p /opt/udemybot
+              git clone --depth=1 "$REPO_URL" /opt/udemybot
+            else
+              cd /opt/udemybot
+              git fetch origin
+              git reset --hard origin/main
+            fi
+            cd /opt/udemybot
+            
+            # Write bot .env from secret
+            if [ -n "${BOT_ENV:-}" ]; then
+              printf "%s" "${BOT_ENV}" > /opt/udemybot/.env
+              chmod 600 /opt/udemybot/.env
+            fi
+            
+            # Install Python dependencies
+            if command -v apt-get >/dev/null 2>&1 && [ "$(id -u)" -eq 0 ]; then
+              apt-get update -y
+              apt-get install -y python3-venv nginx php-fpm
+            fi
+            if [ ! -x .venv/bin/python ]; then
+              python3 -m venv .venv
+            fi
+            .venv/bin/pip install --upgrade pip setuptools wheel
+            if [ -f requirements.txt ]; then
+              .venv/bin/pip install -r requirements.txt
+            fi
+            
+            # Deploy website files to web directory
+            WEB_DIR="/var/www/html"
+            if [ -d "$WEB_DIR" ]; then
+              echo "Deploying website files to $WEB_DIR"
+              cp -r quicktrends_files/* "$WEB_DIR/" 2>/dev/null || true
+              chown -R www-data:www-data "$WEB_DIR" 2>/dev/null || true
+              chmod -R 755 "$WEB_DIR" 2>/dev/null || true
+            elif [ -d "/usr/share/nginx/html" ]; then
+              echo "Deploying website files to /usr/share/nginx/html"
+              cp -r quicktrends_files/* "/usr/share/nginx/html/" 2>/dev/null || true
+              chown -R nginx:nginx "/usr/share/nginx/html" 2>/dev/null || true
+            else
+              echo "Creating web directory at $WEB_DIR"
+              mkdir -p "$WEB_DIR"
+              cp -r quicktrends_files/* "$WEB_DIR/"
+              chown -R www-data:www-data "$WEB_DIR" 2>/dev/null || true
+            fi
+            
+            # Configure nginx for quicktrends.in domain
+            NGINX_CONF="/etc/nginx/sites-available/quicktrends.in"
+            if [ ! -f "$NGINX_CONF" ]; then
+              cat > "$NGINX_CONF" << 'EOF'
+            server {
+                listen 80;
+                server_name quicktrends.in www.quicktrends.in;
+                root /var/www/html;
+                index index.php index.html;
+                
+                location / {
+                    try_files $uri $uri/ /index.php?$query_string;
+                }
+                
+                location ~ \.php$ {
+                    include snippets/fastcgi-php.conf;
+                    fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+                }
+                
+                location ~ /\.ht {
+                    deny all;
+                }
+            }
+            EOF
+              ln -sf "$NGINX_CONF" /etc/nginx/sites-enabled/
+              systemctl reload nginx 2>/dev/null || true
+            fi
+            
+            # Install and configure bot service
+            SVC_CONTENT='[Unit]\nDescription=Udemy Course Bot\nAfter=network.target\n\n[Service]\nType=simple\nWorkingDirectory=/opt/udemybot\nEnvironmentFile=/opt/udemybot/.env\nExecStart=/opt/udemybot/.venv/bin/python /opt/udemybot/main.py\nRestart=always\nRestartSec=5\nUser=root\n\n[Install]\nWantedBy=multi-user.target\n'
+            if [ "$(id -u)" -eq 0 ]; then
+              printf "%b" "$SVC_CONTENT" > /etc/systemd/system/udemybot.service
+              systemctl daemon-reload
+              systemctl enable --now udemybot || systemctl restart udemybot || true
+            else
+              if command -v sudo >/dev/null 2>&1; then
+                printf "%b" "$SVC_CONTENT" | sudo tee /etc/systemd/system/udemybot.service >/dev/null || true
+                sudo systemctl daemon-reload || true
+                sudo systemctl enable --now udemybot || sudo systemctl restart udemybot || true
+              else
+                echo "systemd install skipped (no root/sudo). Bot can be started manually: .venv/bin/python main.py &" >&2
+              fi
+            fi
+            
+            echo "Deployment completed successfully!"
+            echo "Bot status: $(systemctl is-active udemybot 2>/dev/null || echo 'unknown')"
+            echo "Website deployed to: $WEB_DIR"

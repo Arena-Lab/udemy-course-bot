@@ -1,0 +1,121 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 37,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Executive Diploma in Technology Management",
+          "url": "https://www.udemy.com/course/executive-diploma-in-technology-management/?couponCode=26753F98BA85C83CB114"
+        },
+        {
+          "title": "Executive Diploma of Chief Executive Officer",
+          "url": "https://www.udemy.com/course/executive-diploma-of-chief-executive-officer/?couponCode=5A67193D15F33E142572"
+        },
+        {
+          "title": "ISO 9001:2015 in 1H",
+          "url": "https://www.udemy.com/course/iso-90012015-in-1h-b/?couponCode=5244EC3ADAEE9A349920"
+        },
+        {
+          "title": "PHP for Beginners: The Complete PHP Intermediate Course 2026",
+          "url": "https://www.udemy.com/course/php-for-beginners-the-complete-php-intermediate-course-2026/?couponCode=PHPFULLINTERMEDATE22"
+        },
+        {
+          "title": "Leadership Development: Decision-Making & Strategic Thinking",
+          "url": "https://www.udemy.com/course/decision-making-leadership-development-course/?couponCode=THANKSGIVING"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/38",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Ultimate Canva Course — Become a Freelance Graphic Designer",
+          "url": "https://www.udemy.com/course/canva-mastery-become-freelance-graphic-designer-in-1-hour/?couponCode=MASHALLAH013"
+        },
+        {
+          "title": "WordPress Web Design & Freelancing MasterClass [2025]",
+          "url": "https://www.udemy.com/course/become-successful-wordpress-freelancer-to-make-money-online/?couponCode=MASHALLAH013"
+        },
+        {
+          "title": "ISO 19011:2018 – Mastering Management System Auditing",
+          "url": "https://www.udemy.com/course/iso-190112018-mastering-management-system-auditing-s/?couponCode=9EFCE10D9E9A61B4F7F7"
+        },
+        {
+          "title": "Online Reputation Management for [Agencies & SMBs w/ AI]",
+          "url": "https://www.udemy.com/course/ai-online-reputation-management-and-public-relatations-agency-course/?couponCode=MASHALLAH013"
+        },
+        {
+          "title": "Certificat Professionnel en Gestion des Risques",
+          "url": "https://www.udemy.com/course/gestion-des-risques/?couponCode=527002E8D1BE21D0EAB4"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/39",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Video Editing with ChatGPT Adobe Premiere Pro Canva CapCut",
+          "url": "https://www.udemy.com/course/video-editing-with-chatgpt-adobe-premiere-pro-canva-capcut/?couponCode=65C2EBCFED77CB615841"
+        },
+        {
+          "title": "HTML 5 With Quizzes And Python 3 Complete Course",
+          "url": "https://www.udemy.com/course/html-5-with-quizzes-and-python-3-complete-course-2023/?couponCode=ECDDCD007F527984EA0A"
+        },
+        {
+          "title": "Financial Accounting & Bookkeeping: Beginners to Advanced.",
+          "url": "https://www.udemy.com/course/financial-accounting-bookkeeping-beginners-to-advanced/?couponCode=49C2AF733C5018A24498"
+        },
+        {
+          "title": "Human Resources Expert Certificate: HR Metrics and Analytics",
+          "url": "https://www.udemy.com/course/human-resources-expert-certificate-hr-metrics-and-analytics/?couponCode=4D6E961B74B3BCF311AB"
+        },
+        {
+          "title": "Google Cloud Generative AI Leader Ultimate Course 2025",
+          "url": "https://www.udemy.com/course/google-cloud-generative-ai-leader-certification-course/?couponCode=CLOUDGURUAMIT"
+        }
+      ]
+    }
+  ]
+}

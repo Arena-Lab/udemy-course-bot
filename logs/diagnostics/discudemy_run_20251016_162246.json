@@ -1,0 +1,86 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 4,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Java from Zero to First Job, Practical Guide, 2000+ examples",
+          "url": "https://www.udemy.com/course/java-development-for-beginners-learnit/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "OWASP Top 10 LLM 2025: AI Security Essentials",
+          "url": "https://www.udemy.com/course/owasp-llm-security-learnit/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "Secure Code in Java and Spring Boot: Build Resilient Apps",
+          "url": "https://www.udemy.com/course/secure-code-java-spring-boot-learnit/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "Java Best Practices for Efficient, Scalable, and Secure Code",
+          "url": "https://www.udemy.com/course/java-best-practices-learnit/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "Code Reviews for Secure, Clean, and Scalable Code",
+          "url": "https://www.udemy.com/course/code-reviews-learnit/?couponCode=OCTOBER_FREE2_2025"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/5",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Canva Masterclass: Social Media, T-Shirt, Video Edit, Motion",
+          "url": "https://www.udemy.com/course/canva-masterclass-social-media-t-shirt-video-edit-motion/?couponCode=A3FF7A9E2D954C963D12"
+        },
+        {
+          "title": "Professional Diploma in Social Media Marketing & Management",
+          "url": "https://www.udemy.com/course/smm-social-media-marketing/?couponCode=0013E7AB9766B9C7BAF0"
+        },
+        {
+          "title": "भारत के नए श्रम कोड",
+          "url": "https://www.udemy.com/course/newlabourcodes/?couponCode=23CCBF90E84029B7709D"
+        },
+        {
+          "title": "Understanding India’s New Labour Codes: A Complete Guide",
+          "url": "https://www.udemy.com/course/understanding-indias-new-labour-codes/?couponCode=C748E7F721D55E5295A0"
+        },
+        {
+          "title": "Cognitive Behavioral Therapy (CBT): From Theory to Practice",
+          "url": "https://www.udemy.com/course/cognitive-behavioral-therapy-cbt-from-theory-to-practice/?couponCode=B8EF744916B5E23E222D"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 13,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Sports Marketing: Principles & Strategies",
+          "url": "https://www.udemy.com/course/sports-marketing/?couponCode=SFREE_26"
+        },
+        {
+          "title": "PowerPoint from Zero to Pro - الباوربوينت من الصفر للاحتراف",
+          "url": "https://www.udemy.com/course/powerpointwithabdou/?couponCode=POWERPOINT1610"
+        },
+        {
+          "title": "28 Days to Master AI Art Generation System",
+          "url": "https://www.udemy.com/course/28-days-to-master-ai-art-generation-system/?couponCode=16OCTOBER2025"
+        },
+        {
+          "title": "DeepSeek AI for Business: Build a Strategy with AI Insights",
+          "url": "https://www.udemy.com/course/deepseek-ai-for-business-build-a-strategy-with-ai-insights/?couponCode=16OCTOBER2025"
+        },
+        {
+          "title": "Design with Canva & AI: A Scalable Workflow for Creators",
+          "url": "https://www.udemy.com/course/design-with-canva-ai-a-scalable-workflow-for-creators/?couponCode=16OCTOBER2025"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/14",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Body Language & Non-Verbal Communication for Leaders",
+          "url": "https://www.udemy.com/course/body-language-non-verbal-communication-for-leaders-y/?couponCode=2985E0EAF5889EEA6F6E"
+        },
+        {
+          "title": "Digital Transformation in HR: Leveraging AI & Analytics",
+          "url": "https://www.udemy.com/course/digital-transformation-in-hr-leveraging-ai-analytics/?couponCode=4099DA588E7CEB51757D"
+        },
+        {
+          "title": "The Complete Artificial Intelligence (AI) for Professionals",
+          "url": "https://www.udemy.com/course/the-complete-artificial-intelligence-ai-for-professionals/?couponCode=OCT_25_02"
+        },
+        {
+          "title": "Decision Making Psychology & Emotional Intelligence",
+          "url": "https://www.udemy.com/course/decision-making-psychology-emotional-intelligence/?couponCode=C75A036C5CB378B6FBF1"
+        },
+        {
+          "title": "Breaking Free: Overcoming Alcohol & Drug Addiction",
+          "url": "https://www.udemy.com/course/breaking-free-overcoming-alcohol-drug-addiction/?couponCode=6CFA38F234DA68C7A1CC"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/15",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Introduction with Amines (Organic Chemistry)",
+          "url": "https://www.udemy.com/course/introduction-with-amines-organic-chemistry/?couponCode=5CE353A2A2C42363F800"
+        },
+        {
+          "title": "Become Digital Electronics Master",
+          "url": "https://www.udemy.com/course/digital-electronics-from-basic-to-advance/?couponCode=354D155022678418BD0C"
+        },
+        {
+          "title": "Physics in Motion (Fundamentals of Physics)",
+          "url": "https://www.udemy.com/course/physics-in-motion/?couponCode=42A0EB10AE66888F66C4"
+        },
+        {
+          "title": "SET THEORY",
+          "url": "https://www.udemy.com/course/master-set-theory-from-scratch/?couponCode=19AA6021FF782AA5D323"
+        },
+        {
+          "title": "Unlocking Inverse Trigonometry: Mastering From Scratch (WOW)",
+          "url": "https://www.udemy.com/course/master-inverse-trigonometry-from-basic-to-advancemaths/?couponCode=27951FF7B51535D4CBD6"
+        }
+      ]
+    }
+  ]
+}

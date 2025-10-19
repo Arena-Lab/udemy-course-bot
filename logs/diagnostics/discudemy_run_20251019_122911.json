@@ -1,0 +1,121 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 2,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 9,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Excel for Financial Modeling & Valuation: The Complete Guide",
+          "url": "https://www.udemy.com/course/excel-for-financial-modeling-valuation-the-complete-guide/?couponCode=85E07A05CD288959C1EC"
+        },
+        {
+          "title": "The Complete Microsoft Word Course: Learn Word Step by Step",
+          "url": "https://www.udemy.com/course/the-complete-microsoft-word-course-learn-word-step-by-step/?couponCode=BFB162B06A7E8E9EF42D"
+        },
+        {
+          "title": "The Complete Python Developer: From Zero to Mastery",
+          "url": "https://www.udemy.com/course/the-complete-python-developer-from-zero-to-mastery/?couponCode=53CB5F69F6EE62945126"
+        },
+        {
+          "title": "Master MongoDB: Cloud Based NoSQL Database Management",
+          "url": "https://www.udemy.com/course/master-mongodb-cloud-based-nosql-database-management/?couponCode=3E04347E7A83C506B176"
+        },
+        {
+          "title": "Hands On Excel VBA Macros: Automate Daily Tasks in Minutes",
+          "url": "https://www.udemy.com/course/hands-on-excel-vba-macros-automate-daily-tasks-in-minutes/?couponCode=9A901D58DE8C58CC31B7"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/3",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "The Complete SEO Guide: SEO For Beginner to Expert",
+          "url": "https://www.udemy.com/course/rank-your-blog-website-in-google-beginners-seo-course/?couponCode=SUBHANALLAH_101925"
+        },
+        {
+          "title": "ChatGPT: Complete ChatGPT Guide For Beginners",
+          "url": "https://www.udemy.com/course/chatgpt-complete-chatgpt-guide-for-beginners/?couponCode=ALHAMDULILLAH_101925"
+        },
+        {
+          "title": "Excel - Formulas & Functions Beginner to Expert Course",
+          "url": "https://www.udemy.com/course/excel-formulas-functions-beginner-to-expert-course/?couponCode=ALHAMDULILLAH_101925"
+        },
+        {
+          "title": "Python And Flask Framework Complete Course For Beginners",
+          "url": "https://www.udemy.com/course/python-for-beginners-course-/?couponCode=32DE23BCDA964D011DFC"
+        },
+        {
+          "title": "C# for Beginner",
+          "url": "https://www.udemy.com/course/csharp-for-beginner/?couponCode=DISCUDEMY.COM"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/4",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Professional Diploma in Office Management (PDOM)",
+          "url": "https://www.udemy.com/course/diploma-in-office-management/?couponCode=E24728F78E4E9D4DED90"
+        },
+        {
+          "title": "Postgraduate Diploma in Supply Chain Engineering Management",
+          "url": "https://www.udemy.com/course/pgdinscem/?couponCode=F70D6A54D3C54C6AEB75"
+        },
+        {
+          "title": "Professional Diploma in Leadership",
+          "url": "https://www.udemy.com/course/leadershipdiploma/?couponCode=673D03DF1ADFB8D6F87F"
+        },
+        {
+          "title": "Professional Diploma in Business English and Communications",
+          "url": "https://www.udemy.com/course/professional-diploma-in-business-english-and-communications/?couponCode=5500230495C3B3B22217"
+        },
+        {
+          "title": "CSS, Bootstrap ,JavaScript, Web Development Course",
+          "url": "https://www.udemy.com/course/css-bootstrap-javascript-web-development-course/?couponCode=A5F5C50224EB8B0FAC43"
+        }
+      ]
+    }
+  ]
+}

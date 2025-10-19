@@ -1,0 +1,86 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 1,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Java from Zero to First Job, Practical Guide, 2000+ examples",
+          "url": "https://www.udemy.com/course/java-development-for-beginners-learnit/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "OWASP Top 10 LLM 2025: AI Security Essentials",
+          "url": "https://www.udemy.com/course/owasp-llm-security-learnit/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "Secure Code in Java and Spring Boot: Build Resilient Apps",
+          "url": "https://www.udemy.com/course/secure-code-java-spring-boot-learnit/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "Java Best Practices for Efficient, Scalable, and Secure Code",
+          "url": "https://www.udemy.com/course/java-best-practices-learnit/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "Code Reviews for Secure, Clean, and Scalable Code",
+          "url": "https://www.udemy.com/course/code-reviews-learnit/?couponCode=OCTOBER_FREE2_2025"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/2",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "ChatGPT Complete Guide: OpenAI API, AI Tools, ChatGPT 4",
+          "url": "https://www.udemy.com/course/gpt-learnit/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "Resilience Patterns in Microservice Architecture: Hands-On",
+          "url": "https://www.udemy.com/course/resilience-patterns-microservice-architecture-learnit/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "JUnit 5, Mockito, PowerMock, TDD, BDD & ATTD",
+          "url": "https://www.udemy.com/course/testing-for-developers/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "Agile Mindset & Adaptability: The Complete Guide to XP",
+          "url": "https://www.udemy.com/course/agile-mindset-learnit/?couponCode=OCTOBER_FREE2_2025"
+        },
+        {
+          "title": "UML: The Most Complete Guide with Real-Life Examples",
+          "url": "https://www.udemy.com/course/uml-learnit/?couponCode=OCTOBER_FREE2_2025"
+        }
+      ]
+    }
+  ]
+}

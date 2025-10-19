@@ -1,0 +1,86 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 40,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 14,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Advanced Program in Product & CX Management and Development",
+          "url": "https://www.udemy.com/course/professional-diploma-in-product-management/?couponCode=7CBB79FE64163F84D7ED"
+        },
+        {
+          "title": "Executive Diploma in Technology Management",
+          "url": "https://www.udemy.com/course/executive-diploma-in-technology-management/?couponCode=26753F98BA85C83CB114"
+        },
+        {
+          "title": "Executive Diploma of Chief Executive Officer",
+          "url": "https://www.udemy.com/course/executive-diploma-of-chief-executive-officer/?couponCode=5A67193D15F33E142572"
+        },
+        {
+          "title": "ISO 9001:2015 in 1H",
+          "url": "https://www.udemy.com/course/iso-90012015-in-1h-b/?couponCode=5244EC3ADAEE9A349920"
+        },
+        {
+          "title": "PHP for Beginners: The Complete PHP Intermediate Course 2026",
+          "url": "https://www.udemy.com/course/php-for-beginners-the-complete-php-intermediate-course-2026/?couponCode=PHPFULLINTERMEDATE22"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/41",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Hands On React JS From Beginner to Expert",
+          "url": "https://www.udemy.com/course/hands-on-react-js-from-beginner-to-expert/?couponCode=73B247040E7372A0EFC6"
+        },
+        {
+          "title": "AngularJS Essentials - From Beginner to Advanced Developer",
+          "url": "https://www.udemy.com/course/angularjs-essentials-from-beginner-to-advanced-developer/?couponCode=19E1BD1ED96F723F616A"
+        },
+        {
+          "title": "Sales & Service Data Analysis & Analytics Expert Certificate",
+          "url": "https://www.udemy.com/course/sales-and-service-data-analysis-and-analytics-expert-certificate/?couponCode=3F207BD75F05DECB9F0A"
+        },
+        {
+          "title": "Data Based Decision Making and Cost-Benefit Analysis (CBA)",
+          "url": "https://www.udemy.com/course/data-based-decision-making-and-cost-benefit-analysis-cba/?couponCode=B5529A940DF746697E17"
+        },
+        {
+          "title": "Capcut Mastery: Create Stunning Social Media Videos",
+          "url": "https://www.udemy.com/course/capcut-mastery-create-stunning-social-media-videos/?couponCode=073EA902DBBB65ACEE52"
+        }
+      ]
+    }
+  ]
+}

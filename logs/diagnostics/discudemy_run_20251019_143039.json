@@ -1,0 +1,86 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 4,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 14,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Time Management Accelerator: Turbocharge Your Productivity",
+          "url": "https://www.udemy.com/course/introduction-to-time-management-p/?couponCode=8743708B2C722AE49013"
+        },
+        {
+          "title": "Professional Diploma in Advertising and Public Relations",
+          "url": "https://www.udemy.com/course/professional-diploma-in-advertising-and-public-relations/?couponCode=D3560D0BAE267308542A"
+        },
+        {
+          "title": "Build 13 Projects with PHP MySQL Bootstrap and PDO",
+          "url": "https://www.udemy.com/course/build-13-projects-with-php-mysql-bootstrap-and-pdo/?couponCode=13PROJECTS53"
+        },
+        {
+          "title": "Complete Flutter Guide 2025: Build Android, iOS and Web apps",
+          "url": "https://www.udemy.com/course/flutter-the-guide-to-build-android-ios-and-web-apps/?couponCode=D4F5CF0943ADAD4707E5"
+        },
+        {
+          "title": "Director de RRHH (Recursos Humanos): Curso 2025 [ES+]",
+          "url": "https://www.udemy.com/course/director-de-rrhh-curso-en-linea-en-espanol/?couponCode=PAPAHR_OCT_IV"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/5",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 1,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Employee Surveys: Design, Analyze & Act on Feedback [EN]",
+          "url": "https://www.udemy.com/course/employee-surveys-design-analyze-act-on-feedback/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "Employee Retention Strategies: Reduce Turnover [EN]",
+          "url": "https://www.udemy.com/course/employee-retention-strategies-reduce-turnover-effectively/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "HR Agile Project Management: MVP, Kanban, Miro, Trello [EN]",
+          "url": "https://www.udemy.com/course/agile-project-management-for-hr-strategy-speed-results/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "Mentorship Training: Become a Skilled Trusted Mentor [EN]",
+          "url": "https://www.udemy.com/course/mentorship-training-become-a-skilled-and-trusted-mentor/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "Gen Z HR Mastery: Hire, Engage, Retain Zoomers [EN]",
+          "url": "https://www.udemy.com/course/gen-z-hr-mastery-hire-engage-retain-zoomers-generation/?couponCode=PAPAHR_OCT_IV"
+        }
+      ]
+    }
+  ]
+}

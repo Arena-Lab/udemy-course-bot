@@ -1,0 +1,51 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 2,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 9,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Excel for Financial Modeling & Valuation: The Complete Guide",
+          "url": "https://www.udemy.com/course/excel-for-financial-modeling-valuation-the-complete-guide/?couponCode=85E07A05CD288959C1EC"
+        },
+        {
+          "title": "The Complete Microsoft Word Course: Learn Word Step by Step",
+          "url": "https://www.udemy.com/course/the-complete-microsoft-word-course-learn-word-step-by-step/?couponCode=BFB162B06A7E8E9EF42D"
+        },
+        {
+          "title": "The Complete Python Developer: From Zero to Mastery",
+          "url": "https://www.udemy.com/course/the-complete-python-developer-from-zero-to-mastery/?couponCode=53CB5F69F6EE62945126"
+        },
+        {
+          "title": "Master MongoDB: Cloud Based NoSQL Database Management",
+          "url": "https://www.udemy.com/course/master-mongodb-cloud-based-nosql-database-management/?couponCode=3E04347E7A83C506B176"
+        },
+        {
+          "title": "Hands On Excel VBA Macros: Automate Daily Tasks in Minutes",
+          "url": "https://www.udemy.com/course/hands-on-excel-vba-macros-automate-daily-tasks-in-minutes/?couponCode=9A901D58DE8C58CC31B7"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 25,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Mastering Lean Software Development - Intensive Course",
+          "url": "https://www.udemy.com/course/mastering-lean-software-development-intensive-course/?couponCode=5198DAC2"
+        },
+        {
+          "title": "Python And Flask Demonstrations Practice Course",
+          "url": "https://www.udemy.com/course/python-and-flask-only-demonstration-course/?couponCode=EB88945D3DE9C2E56CF3"
+        },
+        {
+          "title": "Sports Marketing: Principles & Strategies",
+          "url": "https://www.udemy.com/course/sports-marketing/?couponCode=SFREE_26"
+        },
+        {
+          "title": "PowerPoint from Zero to Pro - الباوربوينت من الصفر للاحتراف",
+          "url": "https://www.udemy.com/course/powerpointwithabdou/?couponCode=POWERPOINT1610"
+        },
+        {
+          "title": "28 Days to Master AI Art Generation System",
+          "url": "https://www.udemy.com/course/28-days-to-master-ai-art-generation-system/?couponCode=16OCTOBER2025"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/26",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Google Cloud Generative AI Leader Ultimate Course 2025",
+          "url": "https://www.udemy.com/course/google-cloud-generative-ai-leader-certification-course/?couponCode=CLOUDGURUAMIT"
+        },
+        {
+          "title": "C++ Training Crash Course for C++ Beginners",
+          "url": "https://www.udemy.com/course/c-training-crash-course-2022/?couponCode=9F112A2D5AE70E526F36"
+        },
+        {
+          "title": "100+ Java Coding Practice Test [Questions & Answers] 2025",
+          "url": "https://www.udemy.com/course/java-coding-interview-questions/?couponCode=BC5439374B4FFC03DE4F"
+        },
+        {
+          "title": "100+ Python Coding Practice Test [Questions & Answers] 2025",
+          "url": "https://www.udemy.com/course/python-interview-questions-answers-coding/?couponCode=B38DC21D0CE26067A8A1"
+        },
+        {
+          "title": "100+ JavaScript Coding Practice Test Questions Answers 2025",
+          "url": "https://www.udemy.com/course/javascript-coding-interview-questions-with-solutions/?couponCode=89271E766A26197424D2"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/27",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Mobile App Design in Figma: From Concept to Prototype",
+          "url": "https://www.udemy.com/course/mobile-app-design-in-figma-from-concept-to-prototype/?couponCode=14OCTOBER2025"
+        },
+        {
+          "title": "YouTube Startrack For Beginners: Launch Your Channel Today",
+          "url": "https://www.udemy.com/course/youtube-startrack-for-beginners-launch-your-channel-today/?couponCode=14OCTOBER2025"
+        },
+        {
+          "title": "Investing & Options: From Basics to Mastery",
+          "url": "https://www.udemy.com/course/investing-options-from-basics-to-mastery/?couponCode=14OCTOBER2025"
+        },
+        {
+          "title": "Mastering AWS Serverless: Hands-On with Core AWS Services",
+          "url": "https://www.udemy.com/course/mastering-aws-serverless-hands-on-with-core-aws-services/?couponCode=14OCTOBER2025"
+        },
+        {
+          "title": "AI-Powered Email Marketing: A Complete Guide",
+          "url": "https://www.udemy.com/course/ai-powered-email-marketing-a-complete-guide/?couponCode=14OCTOBER2025"
+        }
+      ]
+    }
+  ]
+}

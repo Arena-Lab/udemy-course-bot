@@ -1,0 +1,121 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 55,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Introduction To Bug Bounties - Main Web App Hacking",
+          "url": "https://www.udemy.com/course/uncle-rats-ultimate-bug-bounty-guide-part-1-2025/?couponCode=F530AE7A9BF01E2613FD"
+        },
+        {
+          "title": "H2O AI Agents : From Theory to Practice",
+          "url": "https://www.udemy.com/course/h2o-ai-agents-from-theory-to-practice/?couponCode=OCT-FREE25"
+        },
+        {
+          "title": "H2O Gen AI Ecosystem Overview - Level 1",
+          "url": "https://www.udemy.com/course/h2o-ecosystem-overview-level-1/?couponCode=OCT-FREE25"
+        },
+        {
+          "title": "Advanced Program in Product & CX Management and Development",
+          "url": "https://www.udemy.com/course/professional-diploma-in-product-management/?couponCode=7CBB79FE64163F84D7ED"
+        },
+        {
+          "title": "Executive Diploma in Technology Management",
+          "url": "https://www.udemy.com/course/executive-diploma-in-technology-management/?couponCode=26753F98BA85C83CB114"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/56",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Free Autodesk Fusion Tutorial - Fusion 360 3d printing learn by building projects (Demo)",
+          "url": "https://www.udemy.com/course/learn-fusion-360-3d-printing-by-building-projects-demo/"
+        },
+        {
+          "title": "Free WordPress Tutorial - Crea campos personalizados avanzados con WordPress",
+          "url": "https://www.udemy.com/course/campos-personalizados-avanzados-en-wordpress/"
+        },
+        {
+          "title": "Free WordPress Tutorial - Curso de WordPress para Principiantes Paso a Paso",
+          "url": "https://www.udemy.com/course/curso-de-wordpress-para-principiantes-paso-a-paso/"
+        },
+        {
+          "title": "Free Alpine.js Tutorial - Aprende las bases de AlpineJS con ejemplos",
+          "url": "https://www.udemy.com/course/aprende-las-bases-de-alpinejs-con-ejemplos/"
+        },
+        {
+          "title": "Free Digital Photography Tutorial - Digital, Virtual and AI Photography",
+          "url": "https://www.udemy.com/course/digital-virtual-and-ai-photography/"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/57",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Free ChatGPT Tutorial - Exploring ChatGPT in 2 hours: Practical Guide for Beginners",
+          "url": "https://www.udemy.com/course/exploring-chatgpt-in-2-hours-practical-guide-for-beginners/"
+        },
+        {
+          "title": "Free Active Directory Tutorial - Creating a Windows Server Active Directory Audit Lab",
+          "url": "https://www.udemy.com/course/windows-server-ad-security-audit-lab/"
+        },
+        {
+          "title": "Free Microsoft Azure Tutorial - Azure Pipelines/AppService/StaticWebApp/ASPNET Core/Angular",
+          "url": "https://www.udemy.com/course/azure-pipelinesappservicestaticwebappaspnet-coreangular/"
+        },
+        {
+          "title": "Free Stock Trading Tutorial - Passive Income Investing with Dividend Stocks and REITs",
+          "url": "https://www.udemy.com/course/learn-to-grow-your-100k-with-dividend-stocks-and-reits/"
+        },
+        {
+          "title": "Free Risk Management Tutorial - World Class Data-Driven Risk Analysis - Theory & Application",
+          "url": "https://www.udemy.com/course/data-driven-risk-analysis-1/"
+        }
+      ]
+    }
+  ]
+}

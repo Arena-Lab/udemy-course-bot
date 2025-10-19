@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-10-16T16:14:21.457243",
+  "max_per_source": 60,
+  "total_scraped": 60,
+  "new_courses": 0,
+  "duplicates": 0,
+  "db_stats": {},
+  "per_scraper": {
+    "discudemy": {
+      "name": "discudemy",
+      "courses_scraped": 0,
+      "errors_count": 0,
+      "success_rate": 0.0
+    }
+  }
+}

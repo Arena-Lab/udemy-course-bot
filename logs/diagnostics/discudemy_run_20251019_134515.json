@@ -1,0 +1,121 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 10,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Director de RRHH (Recursos Humanos): Curso 2025 [ES+]",
+          "url": "https://www.udemy.com/course/director-de-rrhh-curso-en-linea-en-espanol/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "ChatGPT for HR AI Powered Automation Talent Management [EN]",
+          "url": "https://www.udemy.com/course/chatgpt-for-hr-and-recruiters-12-academic-hours-200-tools/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "Social Recruiting: Facebook, Github, LinkedIn Recruiter [EN]",
+          "url": "https://www.udemy.com/course/social-media-recruitment-from-linkedin-to-facebook-github/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "People Partner HR certification program for future HRBP [EN]",
+          "url": "https://www.udemy.com/course/become-a-certified-people-partner-your-path-to-a-rewarding/?couponCode=PAPAHR_OCT_IV"
+        },
+        {
+          "title": "HR Trends 2025-2030: Future Strategies & Innovations [EN]",
+          "url": "https://www.udemy.com/course/future-of-hr-master-2025-2030-trends-and-strategies/?couponCode=PAPAHR_OCT_IV"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/11",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Mastering Microsoft Project",
+          "url": "https://www.udemy.com/course/microsoft-project-f/?couponCode=075AD5E4790497DE4A63"
+        },
+        {
+          "title": "Executive Diploma in Business Management and Administration",
+          "url": "https://www.udemy.com/course/executive-diploma-in-business-management-and-administration/?couponCode=D5C6DF483A3D4C844660"
+        },
+        {
+          "title": "Adobe After Effect Essential: Learn Video Motion Animation",
+          "url": "https://www.udemy.com/course/adobe-after-effect-essential-learn-video-motion-animation/?couponCode=236015DDBF80AE25A8B2"
+        },
+        {
+          "title": "T-Shirt Design for Beginner to Advanced with Adobe Photoshop",
+          "url": "https://www.udemy.com/course/t-shirt-design-for-beginner-to-advanced-with-adobe-photoshop/?couponCode=E928F56C776C1398A2D6"
+        },
+        {
+          "title": "Complete Video Editing BootCamp Beginner to Advanced",
+          "url": "https://www.udemy.com/course/complete-video-editing-bootcamp-beginner-to-advanced/?couponCode=B9CC1944AC6BD3424065"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/12",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "MongoDB - The Complete MongoDB Developers Course",
+          "url": "https://www.udemy.com/course/mongodb-the-complete-mongodb-developers-course/?couponCode=6FB2B328A76D2A180769"
+        },
+        {
+          "title": "R Programming - R Programming Language Beginners to Pro",
+          "url": "https://www.udemy.com/course/r-programming-r-programming-language-beginners-to-pro/?couponCode=7671DA13591C51BBAB55"
+        },
+        {
+          "title": "Professional Diploma in Social Media Marketing & Copywriting",
+          "url": "https://www.udemy.com/course/professional-diploma-in-social-media-marketing-copywriting/?couponCode=F9A43CF7D4B2E1C32043"
+        },
+        {
+          "title": "Ultimate Microsoft Excel With Data Analysis & VBA Macros",
+          "url": "https://www.udemy.com/course/ultimate-microsoft-excel-with-data-analysis-vba-macros/?couponCode=BISMILLAH-17"
+        },
+        {
+          "title": "Complete MySQL Bootcamp: Learn SQL Step by Step",
+          "url": "https://www.udemy.com/course/complete-mysql-bootcamp-learn-sql-step-by-step/?couponCode=D192DB346419DD84870E"
+        }
+      ]
+    }
+  ]
+}

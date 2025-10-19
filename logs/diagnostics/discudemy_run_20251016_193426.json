@@ -1,0 +1,86 @@
+{
+  "source": "discudemy",
+  "fresh_cursor": 16,
+  "fresh_slice": 3,
+  "backfill": {
+    "start": 0,
+    "end": 0
+  },
+  "quotas": {
+    "fresh": 60,
+    "backfill": 0,
+    "total_limit": 60
+  },
+  "pages": [
+    {
+      "page_url": "https://www.discudemy.com/all",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 15,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Sports Marketing: Principles & Strategies",
+          "url": "https://www.udemy.com/course/sports-marketing/?couponCode=SFREE_26"
+        },
+        {
+          "title": "PowerPoint from Zero to Pro - الباوربوينت من الصفر للاحتراف",
+          "url": "https://www.udemy.com/course/powerpointwithabdou/?couponCode=POWERPOINT1610"
+        },
+        {
+          "title": "28 Days to Master AI Art Generation System",
+          "url": "https://www.udemy.com/course/28-days-to-master-ai-art-generation-system/?couponCode=16OCTOBER2025"
+        },
+        {
+          "title": "DeepSeek AI for Business: Build a Strategy with AI Insights",
+          "url": "https://www.udemy.com/course/deepseek-ai-for-business-build-a-strategy-with-ai-insights/?couponCode=16OCTOBER2025"
+        },
+        {
+          "title": "Design with Canva & AI: A Scalable Workflow for Creators",
+          "url": "https://www.udemy.com/course/design-with-canva-ai-a-scalable-workflow-for-creators/?couponCode=16OCTOBER2025"
+        }
+      ]
+    },
+    {
+      "page_url": "https://www.discudemy.com/all/17",
+      "is_backfill": false,
+      "candidates": 15,
+      "resolved": 15,
+      "validated": 0,
+      "added": 15,
+      "db_duplicates": 0,
+      "no_real_url": 0,
+      "failed_validation": 0,
+      "quota_skipped": 0,
+      "errors": 0,
+      "samples": [
+        {
+          "title": "Strategic ESG and Sustainability in Business Operations",
+          "url": "https://www.udemy.com/course/strategic-esg-and-sustainability-in-business-operations/?couponCode=457DB027070A7BA2AEA7"
+        },
+        {
+          "title": "Executive Program in Advanced Feminine Leadership",
+          "url": "https://www.udemy.com/course/executive-program-in-advanced-feminine-leadership/?couponCode=98692297AFADB8468329"
+        },
+        {
+          "title": "AWS Essentials: A Complete Beginner's Guide",
+          "url": "https://www.udemy.com/course/aws-essentials-a-complete-beginners-guide/?couponCode=5A5A2BE89CE0D69BFAB2"
+        },
+        {
+          "title": "Advanced PowerPoint Masterclass for Professionals",
+          "url": "https://www.udemy.com/course/advanced-powerpoint-masterclass-for-professionals/?couponCode=DAA60FEF918D7DBC9A36"
+        },
+        {
+          "title": "Python App Development Masterclass App Development Bootcamp",
+          "url": "https://www.udemy.com/course/python-app-development-masterclass-app-development-bootcamp/?couponCode=2CB41E09DD49320880A3"
+        }
+      ]
+    }
+  ]
+}
