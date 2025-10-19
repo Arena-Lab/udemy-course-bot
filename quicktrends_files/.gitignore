@@ -1,0 +1,14 @@
+# Web generated
+logs/
+cache/
+cache_*.json
+*.log
+
+# Secrets
+.env
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
