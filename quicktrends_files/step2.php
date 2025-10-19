@@ -8,6 +8,7 @@ require_once 'config.php';
 
 // Get and validate target URL
 $target_url = $_GET['u'] ?? '';
+
 if (!$target_url || !filter_var($target_url, FILTER_VALIDATE_URL)) {
     header('Location: index.php');
     exit;
