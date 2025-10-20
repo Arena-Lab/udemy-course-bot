@@ -391,12 +391,12 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
         .mobile-menu { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: none; z-index: 1100; }
         .mobile-menu.open { display: block; }
         .mobile-drawer { position: absolute; right: 0; top: 0; bottom: 0; width: 80%; max-width: 340px; background: #ffffff; box-shadow: -8px 0 24px rgba(0,0,0,0.15); padding: 22px; display: grid; gap: 0; }
-        .mobile-link { display: block; text-decoration: none; color: #111827; font-weight: 600; padding: 12px 4px; border: 0; background: transparent; border-bottom: 1px solid #e5e7eb; }
-        .mobile-link:last-child { border-bottom: none; }
+        .mobile-link { display: block; text-decoration: none; color: #111827; font-weight: 700; padding: 10px 0; border: 0; background: transparent; }
         .mobile-link.active { color: #1e40af; }
-
-        /* Status bar (bot updated note) */
-        .status-bar { background: #ecfeff; color: #0e7490; border: 1px solid #a5f3fc; border-left: 0; border-right: 0; padding: 10px 20px; font-weight: 700; text-align: center; }
+        
+        /* Carousel next button (mobile only) */
+        .scroll-next { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 9999px; border: 1px solid #e5e7eb; background: rgba(255,255,255,.95); display: none; place-items: center; font-size: 20px; line-height: 1; box-shadow: 0 8px 24px rgba(0,0,0,.15); cursor: pointer; }
+        @media (max-width: 768px) { .scroll-next { display: grid; } }
         
         /* Container */
         .container {
@@ -501,7 +501,7 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
         .tele-btn:hover { transform: translateY(-2px); }
 
         /* Similar coupons row (top) */
-        .similar-section { background: white; margin: 16px auto 0 auto; padding: 22px; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .similar-section { background: white; margin: 16px auto 0 auto; padding: 22px; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); position: relative; }
         .similar-row { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr); gap: 16px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
         .similar-card { display: block; text-decoration: none; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #fff; color: #1f2937; scroll-snap-align: start; }
         .similar-thumb { width: 100%; height: 120px; object-fit: cover; display: block; }
@@ -1190,9 +1190,7 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
         </nav>
     </div>
 
-    <!-- Status Bar / Bot note -->
-    <?php $__stats = qt_feed_stats(); ?>
-    <div class="status-bar">Automatically updated by our bot • Only active, non‑expired coupons • <?= (int)($__stats['active_count'] ?? 0) ?> active now • Updated <?= htmlspecialchars($__stats['updated_human'] ?? 'just now') ?>.</div>
+    
     
     <!-- Left Side Ad -->
     <?php $ad_left = getAadsAdCode('300x600', 4); if (!empty($ad_left)): ?>
@@ -1302,7 +1300,7 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
         <?php if (!empty($top_similar)): ?>
         <div class="similar-section">
             <div class="section-title" style="text-align:left; margin-bottom:16px;">Similar coupons</div>
-            <div class="similar-row">
+            <div class="similar-row" id="simrow">
                 <?php foreach ($top_similar as $course): ?>
                 <a class="similar-card" href="go.php?u=<?= urlencode($course['url']) ?>">
                     <img class="similar-thumb" src="<?= htmlspecialchars($course['image']) ?>" alt="<?= htmlspecialchars($course['title']) ?>">
@@ -1311,6 +1309,7 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                 </a>
                 <?php endforeach; ?>
             </div>
+            <button class="scroll-next" data-target="#simrow" aria-label="Next">›</button>
         </div>
         <?php endif; ?>
 
@@ -1399,8 +1398,8 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
             
             // Display items in rows of 4
             $chunks = array_chunk($items, 4);
-            foreach ($chunks as $chunk): ?>
-            <div class="categories-row">
+            foreach ($chunks as $i => $chunk): ?>
+            <div class="categories-row" id="catrow<?= $i ?>">
                 <?php foreach ($chunk as $item): ?>
                     <?php if (isset($item['type']) && $item['type'] === 'ad'): ?>
                         <?php $ad_box = getAadsAdCode('300x250', $item['data']['code']); if (!empty($ad_box)): ?>
@@ -1422,15 +1421,16 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                         </a>
                     <?php endif; ?>
                 <?php endforeach; ?>
+                <button class="scroll-next" data-target="#catrow<?= $i ?>" aria-label="Next">›</button>
             </div>
             <?php endforeach; ?>
         </div>
         
         <!-- Related Courses Section -->
         <?php if (!empty($bottom_related)): ?>
-        <div class="related-section">
+        <div class="related-section" style="position:relative;">
             <h2 class="section-title">🔥 Students Also Enrolled In</h2>
-            <div class="courses-grid">
+            <div class="courses-grid" id="relrow">
                 <?php foreach ($bottom_related as $course): ?>
                 <div class="course-card">
                     <img src="<?= htmlspecialchars($course['image']) ?>" alt="<?= htmlspecialchars($course['title']) ?>" class="course-image">
@@ -1611,6 +1611,17 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                 menu.addEventListener('click', (e) => { if (e.target === menu) toggleMenu(false); });
                 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleMenu(false); });
             }
+
+            // Horizontal carousel next buttons
+            document.querySelectorAll('.scroll-next').forEach(btn => {
+                const target = btn.getAttribute('data-target');
+                const el = target ? document.querySelector(target) : null;
+                if (!el) return;
+                btn.addEventListener('click', () => {
+                    const delta = Math.max(240, Math.min(el.clientWidth * 0.9, 480));
+                    el.scrollBy({ left: delta, behavior: 'smooth' });
+                });
+            });
 
             // Read more toggler for description
             const desc = document.getElementById('desc-content');

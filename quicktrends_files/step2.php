@@ -886,6 +886,7 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
             padding: 40px;
             border-radius: 16px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
         }
         
         .section-title {
@@ -901,6 +902,9 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
+
+        /* Carousel next button (mobile only) */
+        .scroll-next { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 9999px; border: 1px solid #e5e7f0; background: rgba(255,255,255,.95); display: none; place-items: center; font-size: 20px; line-height: 1; box-shadow: 0 8px 24px rgba(0,0,0,.15); cursor: pointer; }
         
         .course-card {
             background: white;
@@ -1269,50 +1273,28 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
         <?php if (!empty($trending_courses)): ?>
         <div class="trending-section">
             <h2 class="section-title">🔥 Trending Free Courses</h2>
-            <div class="courses-grid">
-                <?php 
-                // Create array with courses and randomly insert ad
-                $courses_with_ad = $trending_courses;
-                $ad_position = rand(2, min(count($trending_courses) - 1, 5)); // Random position between 2nd and 5th course
-                
-                // Insert ad at random position
-                array_splice($courses_with_ad, $ad_position, 0, [['type' => 'ad']]);
-                
-                foreach ($courses_with_ad as $index => $item): 
-                    if (isset($item['type']) && $item['type'] === 'ad'): ?>
-                        <?php $ad_tile = getAadsAdCode('336x280', 8); if (!empty($ad_tile)): ?>
-                        <!-- Random Ad Box -->
-                        <div class="course-ad-card">
-                            <div class="course-ad-content">
-                                <div class="ad-label">Advertisement</div>
-                                <div class="ad-placeholder" style="min-height: 280px;">
-                                    <?= $ad_tile ?>
+            <div class="courses-grid" id="trendgrid">
+                <?php foreach ($trending_courses as $item): ?>
+                    <div class="course-card">
+                        <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="course-image">
+                        <div class="course-content">
+                            <h3 class="course-card-title"><?= htmlspecialchars($item['title']) ?></h3>
+                            <div class="course-stats">
+                                <div class="rating">
+                                    <span>⭐</span>
+                                    <span><?= number_format((float)($item['rating'] ?? 0), 1) ?></span>
                                 </div>
+                                <span>👥 <?= htmlspecialchars($item['students'] ?? '—') ?></span>
+                                <span>🕒 <?= htmlspecialchars($item['duration'] ?? '') ?></span>
                             </div>
+                            <a href="go.php?u=<?= urlencode($item['url']) ?>" class="course-btn">
+                                Get Free Access
+                            </a>
                         </div>
-                        <?php endif; ?>
-                    <?php else: ?>
-                        <!-- Course Card -->
-                        <div class="course-card">
-                            <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="course-image">
-                            <div class="course-content">
-                                <h3 class="course-card-title"><?= htmlspecialchars($item['title']) ?></h3>
-                                <div class="course-stats">
-                                    <div class="rating">
-                                        <span>⭐</span>
-                                        <span><?= number_format((float)($item['rating'] ?? 0), 1) ?></span>
-                                    </div>
-                                    <span>👥 <?= htmlspecialchars($item['students'] ?? '—') ?></span>
-                                    <span>🕒 <?= htmlspecialchars($item['duration'] ?? '') ?></span>
-                                </div>
-                                <a href="go.php?u=<?= urlencode($item['url']) ?>" class="course-btn">
-                                    Get Free Access
-                                </a>
-                            </div>
-                        </div>
-                    <?php endif;
-                endforeach; ?>
+                    </div>
+                <?php endforeach; ?>
             </div>
+            <button class="scroll-next" data-target="#trendgrid" aria-label="Next">›</button>
         </div>
         <?php endif; ?>
         

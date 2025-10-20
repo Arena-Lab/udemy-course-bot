@@ -106,8 +106,7 @@ $curr = basename($_SERVER['PHP_SELF']);
         .mobile-menu{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:1000}
         .mobile-menu.open{display:block}
         .mobile-drawer{position:absolute;right:0;top:0;bottom:0;width:80%;max-width:340px;background:#fff;box-shadow:-8px 0 24px rgba(0,0,0,.15);padding:22px;display:grid;gap:0}
-        .mobile-link{display:block;text-decoration:none;color:#111827;font-weight:600;padding:12px 4px;border:0;background:transparent;border-bottom:1px solid #e5e7eb}
-        .mobile-link:last-child{border-bottom:none}
+        .mobile-link{display:block;text-decoration:none;color:#111827;font-weight:700;padding:10px 0;border:0;background:transparent}
         .mobile-link.active{color:#1e40af}
         .blog-hero-header {
             background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
@@ -340,7 +339,6 @@ $curr = basename($_SERVER['PHP_SELF']);
     <div class="container" style="padding-top: 0;">
         <div class="featured-section" style="text-align:left;">
             <h2 style="margin-bottom: 10px;">Latest Free Courses</h2>
-            <p style="color:#64748b; margin-bottom: 20px;">Automatically updated from the bot. Only active, non-expired coupons.</p>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;">
                 <?php foreach ($latest as $c): ?>
                 <a href="go.php?u=<?= urlencode($c['url']) ?>" style="text-decoration:none;color:inherit;">

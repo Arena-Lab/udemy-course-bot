@@ -167,6 +167,16 @@ if ($_POST && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['m
         .nav-links a:hover, .nav-links a.active {
             color: #1e40af;
         }
+        /* Mobile navigation */
+        .hamburger{width:38px;height:34px;border-radius:8px;border:1px solid #e2e8f0;display:none;place-items:center;background:#f8fafc;cursor:pointer}
+        .hamburger span{width:20px;height:2px;background:#111827;display:block;position:relative}
+        .hamburger span::before,.hamburger span::after{content:"";position:absolute;left:0;width:100%;height:2px;background:#111827}
+        .hamburger span::before{top:-6px}
+        .hamburger span::after{top:6px}
+        .mobile-menu{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:1000}
+        .mobile-menu.open{display:block}
+        .mobile-drawer{position:absolute;right:0;top:0;bottom:0;width:80%;max-width:340px;background:#fff;box-shadow:-8px 0 24px rgba(0,0,0,.15);padding:22px;display:grid;gap:0}
+        .mobile-link{display:block;text-decoration:none;color:#111827;font-weight:700;padding:10px 0;border:0;background:transparent}
         
         .hero-section {
             background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
@@ -813,6 +823,7 @@ if ($_POST && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['m
         
         @media (max-width: 768px) {
             .nav-links { display: none; }
+            .hamburger{display:grid}
             .hero-content h1 { font-size: 2.5rem; }
             .hero-content p { font-size: 1.1rem; }
             .form-row { 
@@ -849,8 +860,20 @@ if ($_POST && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['m
                 <li><a href="about.php" class="<?= $curr==='about.php' ? 'active' : '' ?>">About</a></li>
                 <li><a href="contact.php" class="<?= $curr==='contact.php' ? 'active' : '' ?>">Contact</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" aria-label="Open Menu"><span></span></button>
         </nav>
     </header>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav class="mobile-drawer">
+            <a class="mobile-link <?= $curr==='index.php' ? 'active' : '' ?>" href="index.php">Home</a>
+            <a class="mobile-link <?= $curr==='blog.php' ? 'active' : '' ?>" href="blog.php">Blog</a>
+            <a class="mobile-link <?= $curr==='courses.php' ? 'active' : '' ?>" href="courses.php">All Free Courses</a>
+            <a class="mobile-link <?= $curr==='about.php' ? 'active' : '' ?>" href="about.php">About</a>
+            <a class="mobile-link <?= $curr==='contact.php' ? 'active' : '' ?>" href="contact.php">Contact</a>
+        </nav>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -974,6 +997,19 @@ if ($_POST && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['m
             </div>
         </div>
     </footer>
+
+    <script>
+    (function(){
+        const hamb=document.getElementById('hamburger');
+        const menu=document.getElementById('mobileMenu');
+        if(hamb&&menu){
+            const toggle=(open)=>{menu.classList.toggle('open',open);menu.setAttribute('aria-hidden',open?'false':'true');document.body.style.overflow=open?'hidden':''};
+            hamb.addEventListener('click',()=>toggle(!menu.classList.contains('open')));
+            menu.addEventListener('click',e=>{if(e.target===menu)toggle(false)});
+            document.addEventListener('keydown',e=>{if(e.key==='Escape')toggle(false)});
+        }
+    })();
+    </script>
 
 </body>
 </html>
