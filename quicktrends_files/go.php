@@ -253,6 +253,7 @@ function extractCourseInfo($url) {
 }
 
 $course_info = extractCourseInfo($target_url);
+$curr = basename($_SERVER['PHP_SELF']);
 $current_course = qt_find_course_from_feed($target_url);
 $current_active = qt_is_course_active($current_course ?? []);
 // Prefer category-based related from feed
@@ -389,8 +390,10 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
 
         .mobile-menu { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: none; z-index: 1100; }
         .mobile-menu.open { display: block; }
-        .mobile-drawer { position: absolute; right: 0; top: 0; bottom: 0; width: 80%; max-width: 340px; background: #ffffff; box-shadow: -8px 0 24px rgba(0,0,0,.15); padding: 22px; display: grid; gap: 14px; }
-        .mobile-link { text-decoration: none; color: #111827; font-weight: 700; padding: 10px 12px; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; }
+        .mobile-drawer { position: absolute; right: 0; top: 0; bottom: 0; width: 80%; max-width: 340px; background: #ffffff; box-shadow: -8px 0 24px rgba(0,0,0,0.15); padding: 22px; display: grid; gap: 0; }
+        .mobile-link { display: block; text-decoration: none; color: #111827; font-weight: 600; padding: 12px 4px; border: 0; background: transparent; border-bottom: 1px solid #e5e7eb; }
+        .mobile-link:last-child { border-bottom: none; }
+        .mobile-link.active { color: #1e40af; }
 
         /* Status bar (bot updated note) */
         .status-bar { background: #ecfeff; color: #0e7490; border: 1px solid #a5f3fc; border-left: 0; border-right: 0; padding: 10px 20px; font-weight: 700; text-align: center; }
@@ -499,8 +502,8 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
 
         /* Similar coupons row (top) */
         .similar-section { background: white; margin: 16px auto 0 auto; padding: 22px; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
-        .similar-row { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr); gap: 16px; overflow-x: auto; padding-bottom: 8px; }
-        .similar-card { display: block; text-decoration: none; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #fff; color: #1f2937; }
+        .similar-row { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr); gap: 16px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
+        .similar-card { display: block; text-decoration: none; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #fff; color: #1f2937; scroll-snap-align: start; }
         .similar-thumb { width: 100%; height: 120px; object-fit: cover; display: block; }
         .similar-title { font-size: 14px; font-weight: 700; padding: 10px 12px 4px 12px; line-height: 1.3; height: 42px; overflow: hidden; }
         .similar-meta { padding: 0 12px 12px 12px; font-size: 12px; color: #64748b; }
@@ -1074,6 +1077,10 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
             color: white;
         }
         
+        /* Hide scrollbars on swipe rows for cleaner mobile feel */
+        .similar-row, .related-section .courses-grid, .categories-section .categories-row { scrollbar-width: none; }
+        .similar-row::-webkit-scrollbar, .related-section .courses-grid::-webkit-scrollbar, .categories-section .categories-row::-webkit-scrollbar { display: none; }
+
         /* Tablet Responsive */
         @media (max-width: 1024px) {
             .categories-row {
@@ -1120,18 +1127,19 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                 grid-template-columns: 1fr;
             }
             
-            /* swipeable rows for categories */
+            /* swipeable rows for categories: show one full card per view */
             .categories-section .categories-row {
                 display: grid; 
                 grid-auto-flow: column; 
-                grid-auto-columns: minmax(220px, 70%);
+                grid-template-columns: none; /* override desktop columns */
+                grid-auto-columns: 100%;
                 gap: 16px; 
                 overflow-x: auto; 
                 padding-bottom: 8px; 
                 -webkit-overflow-scrolling: touch;
-                scroll-snap-type: x proximity;
+                scroll-snap-type: x mandatory;
             }
-            .categories-section .category-card { scroll-snap-align: start; }
+            .categories-section .category-card { scroll-snap-align: center; scroll-snap-stop: always; }
             
             .cookie-content {
                 flex-direction: column;
@@ -1174,11 +1182,11 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
     <!-- Mobile Menu Drawer -->
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
         <nav class="mobile-drawer">
-            <a class="mobile-link" href="index.php">Home</a>
-            <a class="mobile-link" href="courses.php">All Free Courses</a>
-            <a class="mobile-link" href="blog.php">Categories</a>
-            <a class="mobile-link" href="about.php">About</a>
-            <a class="mobile-link" href="contact.php">Contact</a>
+            <a class="mobile-link <?= $curr==='index.php' ? 'active' : '' ?>" href="index.php">Home</a>
+            <a class="mobile-link <?= $curr==='courses.php' ? 'active' : '' ?>" href="courses.php">All Free Courses</a>
+            <a class="mobile-link <?= $curr==='blog.php' ? 'active' : '' ?>" href="blog.php">Categories</a>
+            <a class="mobile-link <?= $curr==='about.php' ? 'active' : '' ?>" href="about.php">About</a>
+            <a class="mobile-link <?= $curr==='contact.php' ? 'active' : '' ?>" href="contact.php">Contact</a>
         </nav>
     </div>
 
@@ -1242,6 +1250,18 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                 $seen[$s] = true;
                 if (count($top_similar) < 6) $top_similar[] = $rc; else if (count($bottom_related) < 5) $bottom_related[] = $rc;
             }
+            // Fallback: if either section is empty, backfill with general high‑quality related
+            if (empty($top_similar) || empty($bottom_related)) {
+                $fallback = qt_get_related_courses($target_url, 12);
+                foreach ($fallback as $fc) {
+                    $s = qt_slug_from_url($fc['url'] ?? '');
+                    if ($s === '' || isset($seen[$s])) continue;
+                    $seen[$s] = true;
+                    if (count($top_similar) < 6) { $top_similar[] = $fc; continue; }
+                    if (count($bottom_related) < 5) { $bottom_related[] = $fc; }
+                    if (count($top_similar) >= 6 && count($bottom_related) >= 5) break;
+                }
+            }
         ?>
 
         
@@ -1273,12 +1293,7 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                             <?php if (!empty($current_course['duration'])): ?><li>⏱️ Duration: <?= htmlspecialchars($current_course['duration']) ?></li><?php endif; ?>
                             <?php if (!empty($current_course['lectures'])): ?><li>🎯 Lectures: <?= htmlspecialchars($current_course['lectures']) ?></li><?php endif; ?>
                         </ul>
-                        <?php if ($current_active): ?>
-                            <a href="courses.php" class="summary-cta secondary">Browse All Free Courses</a>
-                        <?php else: ?>
-                            <a href="#" class="summary-cta secondary" style="margin-top:10px; pointer-events:none; opacity:.7;">Coupon Expired</a>
-                            <a href="courses.php" class="summary-cta">See Active Free Courses</a>
-                        <?php endif; ?>
+                        <a href="courses.php" class="summary-cta secondary">Browse All Free Courses</a>
                     </div>
                 </aside>
             </div>

@@ -151,8 +151,9 @@ $curr = basename($_SERVER['PHP_SELF']);
         .hamburger span::after{top:6px}
         .mobile-menu{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:1000}
         .mobile-menu.open{display:block}
-        .mobile-drawer{position:absolute;right:0;top:0;bottom:0;width:80%;max-width:340px;background:#fff;box-shadow:-8px 0 24px rgba(0,0,0,.15);padding:22px;display:grid;gap:14px}
-        .mobile-link{text-decoration:none;color:#111827;font-weight:700;padding:10px 12px;border-radius:8px;border:1px solid #e5e7eb;background:#f8fafc}
+        .mobile-drawer{position:absolute;right:0;top:0;bottom:0;width:80%;max-width:340px;background:#fff;box-shadow:-8px 0 24px rgba(0,0,0,.15);padding:22px;display:grid;gap:0}
+        .mobile-link{display:block;text-decoration:none;color:#111827;font-weight:600;padding:12px 4px;border:0;background:transparent}
+        .mobile-link.active{color:#1e40af}
         
         .nav-links a {
             text-decoration: none;
@@ -358,11 +359,11 @@ $curr = basename($_SERVER['PHP_SELF']);
     </header>
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
         <nav class="mobile-drawer">
-            <a class="mobile-link" href="index.php">Home</a>
-            <a class="mobile-link" href="courses.php">All Free Courses</a>
-            <a class="mobile-link" href="blog.php">Blog</a>
-            <a class="mobile-link" href="about.php">About</a>
-            <a class="mobile-link" href="contact.php">Contact</a>
+            <a class="mobile-link <?= $curr==='index.php' ? 'active' : '' ?>" href="index.php">Home</a>
+            <a class="mobile-link <?= $curr==='courses.php' ? 'active' : '' ?>" href="courses.php">All Free Courses</a>
+            <a class="mobile-link <?= $curr==='blog.php' ? 'active' : '' ?>" href="blog.php">Blog</a>
+            <a class="mobile-link <?= $curr==='about.php' ? 'active' : '' ?>" href="about.php">About</a>
+            <a class="mobile-link <?= $curr==='contact.php' ? 'active' : '' ?>" href="contact.php">Contact</a>
         </nav>
     </div>
 
