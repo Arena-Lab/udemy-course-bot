@@ -76,12 +76,22 @@ $paged = array_slice($filtered, $offset, $per_page);
 <link rel="stylesheet" href="qt-ui.css?v=1">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#1f2937;background:#f8fafc}
 .header{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.08);position:sticky;top:0;z-index:50}
 .nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
 .logo{font-weight:800;color:#1e40af;text-decoration:none}
 .nav-links{display:flex;gap:18px;list-style:none}
 .nav-links a{text-decoration:none;color:#475569}
+.hamburger{width:38px;height:34px;border-radius:8px;border:1px solid #e2e8f0;display:none;place-items:center;background:#f8fafc;cursor:pointer}
+.hamburger span{width:20px;height:2px;background:#111827;display:block;position:relative}
+.hamburger span:before,.hamburger span:after{content:"";position:absolute;left:0;width:100%;height:2px;background:#111827}
+.hamburger span:before{top:-6px}
+.hamburger span:after{top:6px}
+.mobile-menu{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:1000}
+.mobile-menu.open{display:block}
+.mobile-drawer{position:absolute;right:0;top:0;bottom:0;width:80%;max-width:340px;background:#fff;box-shadow:-8px 0 24px rgba(0,0,0,.15);padding:22px;display:grid;gap:14px}
+.mobile-link{text-decoration:none;color:#111827;font-weight:700;padding:10px 12px;border-radius:8px;border:1px solid #e5e7eb;background:#f8fafc}
 .container{max-width:1200px;margin:0 auto;padding:20px}
 .toolbar{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:14px;flex-wrap:wrap;margin-top:16px}
 .select, .input, .button{border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;background:#fff;color:#1f2937}
@@ -101,7 +111,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;l
 .pager{display:flex;gap:8px;justify-content:center;margin:20px 0}
 .pager a{padding:8px 12px;border:1px solid #e2e8f0;border-radius:8px;color:#1f2937;text-decoration:none}
 .pager .active{background:#1e40af;color:#fff;border-color:#1e40af}
-@media(max-width:768px){.nav-links{display:none}}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:grid}}
 </style>
 </head>
 <body>
@@ -115,8 +125,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;l
       <li><a href="about.php" class="<?= $curr==='about.php' ? 'active' : '' ?>">About</a></li>
       <li><a href="contact.php" class="<?= $curr==='contact.php' ? 'active' : '' ?>">Contact</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open Menu"><span></span></button>
   </nav>
 </header>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="mobile-drawer">
+    <a class="mobile-link" href="index.php">Home</a>
+    <a class="mobile-link" href="courses.php">All Free Courses</a>
+    <a class="mobile-link" href="blog.php">Blog</a>
+    <a class="mobile-link" href="about.php">About</a>
+    <a class="mobile-link" href="contact.php">Contact</a>
+  </nav>
+ </div>
 <main class="container">
   <h1>Latest Free Udemy Coupons</h1>
   <form class="toolbar" method="get" action="courses.php">
@@ -163,11 +183,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;l
 
   <?php if ($total_pages > 1): ?>
   <div class="pager">
-    <?php for ($p = 1; $p <= $total_pages; $p++): $u = http_build_query(['q'=>$q,'cat'=>$cat,'sort'=>$sort,'page'=>$p]); ?>
+    <?php $base=['q'=>$q,'cat'=>$cat,'sort'=>$sort]; ?>
+    <?php if ($page > 1): $u = http_build_query($base + ['page'=>$page-1]); ?>
+      <a href="courses.php?<?= $u ?>" class="prev">Prev</a>
+    <?php endif; ?>
+    <?php $maxPages=min(3,$total_pages); for ($p=1;$p<=$maxPages;$p++): $u = http_build_query($base + ['page'=>$p]); ?>
       <a href="courses.php?<?= $u ?>" class="<?= $p===$page?'active':'' ?>"><?= $p ?></a>
     <?php endfor; ?>
+    <?php if ($page < $total_pages): $u = http_build_query($base + ['page'=>$page+1]); ?>
+      <a href="courses.php?<?= $u ?>" class="next">Next</a>
+    <?php endif; ?>
   </div>
   <?php endif; ?>
 </main>
+<script>
+  (function(){
+    const hamb=document.getElementById('hamburger');
+    const menu=document.getElementById('mobileMenu');
+    if(hamb&&menu){
+      const toggle=(open)=>{menu.classList.toggle('open',open);menu.setAttribute('aria-hidden',open?'false':'true');document.body.style.overflow=open?'hidden':''};
+      hamb.addEventListener('click',()=>toggle(!menu.classList.contains('open')));
+      menu.addEventListener('click',e=>{if(e.target===menu)toggle(false)});
+      document.addEventListener('keydown',e=>{if(e.key==='Escape')toggle(false)});
+    }
+  })();
+</script>
 </body>
 </html>

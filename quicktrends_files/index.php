@@ -104,6 +104,7 @@ $curr = basename($_SERVER['PHP_SELF']);
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { max-width: 100%; overflow-x: hidden; }
         
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -143,6 +144,15 @@ $curr = basename($_SERVER['PHP_SELF']);
             list-style: none;
             gap: 2rem;
         }
+        .hamburger{width:38px;height:34px;border-radius:8px;border:1px solid #e2e8f0;display:none;place-items:center;background:#f8fafc;cursor:pointer}
+        .hamburger span{width:20px;height:2px;background:#111827;display:block;position:relative}
+        .hamburger span::before,.hamburger span::after{content:"";position:absolute;left:0;width:100%;height:2px;background:#111827}
+        .hamburger span::before{top:-6px}
+        .hamburger span::after{top:6px}
+        .mobile-menu{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:1000}
+        .mobile-menu.open{display:block}
+        .mobile-drawer{position:absolute;right:0;top:0;bottom:0;width:80%;max-width:340px;background:#fff;box-shadow:-8px 0 24px rgba(0,0,0,.15);padding:22px;display:grid;gap:14px}
+        .mobile-link{text-decoration:none;color:#111827;font-weight:700;padding:10px 12px;border-radius:8px;border:1px solid #e5e7eb;background:#f8fafc}
         
         .nav-links a {
             text-decoration: none;
@@ -326,6 +336,7 @@ $curr = basename($_SERVER['PHP_SELF']);
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1.1rem; }
             .nav-links { display: none; }
+            .hamburger{display:grid}
             .features-grid { grid-template-columns: 1fr; }
             .footer-links { flex-direction: column; gap: 1rem; }
         }
@@ -342,8 +353,18 @@ $curr = basename($_SERVER['PHP_SELF']);
                 <li><a href="about.php" class="<?= $curr==='about.php' ? 'active' : '' ?>">About</a></li>
                 <li><a href="contact.php" class="<?= $curr==='contact.php' ? 'active' : '' ?>">Contact</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" aria-label="Open Menu"><span></span></button>
         </nav>
     </header>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav class="mobile-drawer">
+            <a class="mobile-link" href="index.php">Home</a>
+            <a class="mobile-link" href="courses.php">All Free Courses</a>
+            <a class="mobile-link" href="blog.php">Blog</a>
+            <a class="mobile-link" href="about.php">About</a>
+            <a class="mobile-link" href="contact.php">Contact</a>
+        </nav>
+    </div>
 
     <main>
         <section class="hero">
@@ -459,5 +480,17 @@ $curr = basename($_SERVER['PHP_SELF']);
             <p style="margin-top: 10px; opacity: 0.7;">Connecting learners with quality educational content since 2024.</p>
         </div>
     </footer>
+    <script>
+        (function(){
+            const hamb=document.getElementById('hamburger');
+            const menu=document.getElementById('mobileMenu');
+            if(hamb&&menu){
+                const toggle=(open)=>{menu.classList.toggle('open',open);menu.setAttribute('aria-hidden',open?'false':'true');document.body.style.overflow=open?'hidden':''};
+                hamb.addEventListener('click',()=>toggle(!menu.classList.contains('open')));
+                menu.addEventListener('click',e=>{if(e.target===menu)toggle(false)});
+                document.addEventListener('keydown',e=>{if(e.key==='Escape')toggle(false)});
+            }
+        })();
+    </script>
 </body>
 </html>

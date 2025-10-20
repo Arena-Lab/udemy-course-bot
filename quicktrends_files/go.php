@@ -577,6 +577,8 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
         .panel-title { font-size: 1.1rem; font-weight: 700; color: #1a202c; margin: 6px 0 10px; }
         .panel-list { margin-left: 18px; color: #4a5568; line-height: 1.7; }
         .panel-text { color: #4a5568; line-height: 1.8; }
+        .panel-text.clamped { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+        .readmore-btn { background: transparent; border: none; color: #1e40af; font-weight: 800; cursor: pointer; padding: 6px 0; }
 
         .right-rail { display: grid; gap: 16px; }
         .summary-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; }
@@ -1101,17 +1103,35 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                 flex-direction: column;
                 gap: 15px;
             }
-            .courses-grid {
-                grid-template-columns: 1fr;
+            /* swipeable rows for related courses */
+            .related-section .courses-grid {
+                display: grid; 
+                grid-auto-flow: column; 
+                grid-auto-columns: minmax(240px, 80%);
+                gap: 16px; 
+                overflow-x: auto; 
+                padding-bottom: 8px; 
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x proximity;
             }
+            .related-section .course-card { scroll-snap-align: start; }
             
             .benefits-grid {
                 grid-template-columns: 1fr;
             }
             
-            .categories-row {
-                grid-template-columns: 1fr;
+            /* swipeable rows for categories */
+            .categories-section .categories-row {
+                display: grid; 
+                grid-auto-flow: column; 
+                grid-auto-columns: minmax(220px, 70%);
+                gap: 16px; 
+                overflow-x: auto; 
+                padding-bottom: 8px; 
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x proximity;
             }
+            .categories-section .category-card { scroll-snap-align: start; }
             
             .cookie-content {
                 flex-direction: column;
@@ -1134,7 +1154,7 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
     <div class="top-banner">
         <div class="top-banner-content">
             <span class="banner-text">🎓 Check Today's 30+ Free Courses!</span>
-            <a href="https://t.me/quicktrends_channel" class="telegram-btn" target="_blank">
+            <a href="https://t.me/udemyzap" class="telegram-btn" target="_blank">
                 Join Telegram Channel
             </a>
         </div>
@@ -1220,7 +1240,7 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                 $s = qt_slug_from_url($rc['url'] ?? '');
                 if ($s === '' || isset($seen[$s])) continue;
                 $seen[$s] = true;
-                if (count($top_similar) < 6) $top_similar[] = $rc; else if (count($bottom_related) < 12) $bottom_related[] = $rc;
+                if (count($top_similar) < 6) $top_similar[] = $rc; else if (count($bottom_related) < 5) $bottom_related[] = $rc;
             }
         ?>
 
@@ -1243,7 +1263,7 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                 <aside>
                     <div class="summary-card hero-summary">
                         <?php if (!empty($current_course['image'])): ?>
-                        <img src="<?= htmlspecialchars(qt_hd_image($current_course['image'])) ?>" alt="<?= htmlspecialchars($course_info['title']) ?>" class="hero-image-cover">
+                        <img src="<?= htmlspecialchars($current_course['image']) ?>" alt="<?= htmlspecialchars($course_info['title']) ?>" class="hero-image-cover">
                         <?php endif; ?>
                         <ul class="summary-list">
                             <?php if (!empty($current_course['rating'])): ?><li>⭐ <?= number_format((float)$current_course['rating'], 1) ?> average rating</li><?php endif; ?>
@@ -1254,7 +1274,6 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                             <?php if (!empty($current_course['lectures'])): ?><li>🎯 Lectures: <?= htmlspecialchars($current_course['lectures']) ?></li><?php endif; ?>
                         </ul>
                         <?php if ($current_active): ?>
-                            <a href="step2.php?u=<?= urlencode($target_url) ?>" class="summary-cta" style="margin-top:10px;">Claim Coupon</a>
                             <a href="courses.php" class="summary-cta secondary">Browse All Free Courses</a>
                         <?php else: ?>
                             <a href="#" class="summary-cta secondary" style="margin-top:10px; pointer-events:none; opacity:.7;">Coupon Expired</a>
@@ -1293,7 +1312,8 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                     <?php if ($desc !== ''): ?>
                     <div id="tab-desc" class="tab-panel active">
                         <div class="panel-title">Course Description</div>
-                        <div class="panel-text"><?= nl2br(htmlspecialchars($desc)) ?></div>
+                        <div id="desc-content" class="panel-text clamped"><?= nl2br(htmlspecialchars($desc)) ?></div>
+                        <button id="toggle-desc" class="readmore-btn" type="button">Read more</button>
                     </div>
                     <?php endif; ?>
                     <?php if (!empty($learn)): ?>
@@ -1575,6 +1595,17 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                 hamb.addEventListener('click', () => toggleMenu(!menu.classList.contains('open')));
                 menu.addEventListener('click', (e) => { if (e.target === menu) toggleMenu(false); });
                 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleMenu(false); });
+            }
+
+            // Read more toggler for description
+            const desc = document.getElementById('desc-content');
+            const btn = document.getElementById('toggle-desc');
+            if (desc && btn) {
+                btn.addEventListener('click', () => {
+                    const isClamped = desc.classList.contains('clamped');
+                    desc.classList.toggle('clamped');
+                    btn.textContent = isClamped ? 'Show less' : 'Read more';
+                });
             }
         });
         
