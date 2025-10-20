@@ -104,26 +104,6 @@ function qt_hd_image($url) {
     return $url;
 }
 
-function qt_parse_time($v) {
-    if (is_numeric($v)) return (int)$v;
-    if (is_string($v)) { $t = strtotime($v); if ($t) return $t; }
-    return 0;
-}
-
-function qt_is_course_active($c) {
-    if (!is_array($c)) return true;
-    if (isset($c['expired']) && $c['expired']) return false;
-    if (isset($c['active']) && !$c['active']) return false;
-    if (isset($c['coupon_status'])) {
-        $st = strtolower((string)$c['coupon_status']);
-        if (!in_array($st, ['active','valid','available','live','working'])) return false;
-    }
-    $keys = ['expires_at','expiry','expires','coupon_expiry','valid_till','end_date','coupon_end','expiry_time'];
-    foreach ($keys as $k) {
-        if (!empty($c[$k])) { $ts = qt_parse_time($c[$k]); if ($ts && time() > $ts) return false; }
-    }
-    return true;
-}
 
 function qt_feed_stats() {
     $file = __DIR__ . '/courses.json';
