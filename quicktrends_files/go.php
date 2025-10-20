@@ -14,6 +14,36 @@ if (!$target_url || !filter_var($target_url, FILTER_VALIDATE_URL)) {
     die('Invalid URL provided');
 }
 
+// Determine if a course is active (not expired) using common keys
+function qt_parse_time($v) {
+    if (is_numeric($v)) return (int)$v;
+    if (is_string($v)) {
+        $t = strtotime($v);
+        if ($t !== false && $t > 0) return $t;
+    }
+    return 0;
+}
+
+function qt_is_course_active($c) {
+    if (!is_array($c)) return true;
+    // explicit flags
+    if (isset($c['expired']) && $c['expired']) return false;
+    if (isset($c['active']) && !$c['active']) return false;
+    if (isset($c['coupon_status'])) {
+        $st = strtolower((string)$c['coupon_status']);
+        if (!in_array($st, ['active','valid','available','live','working'])) return false;
+    }
+    // expiry-like fields
+    $keys = ['expires_at','expiry','expires','coupon_expiry','valid_till','end_date','coupon_end','expiry_time'];
+    foreach ($keys as $k) {
+        if (!empty($c[$k])) {
+            $ts = qt_parse_time($c[$k]);
+            if ($ts && time() > $ts) return false;
+        }
+    }
+    return true;
+}
+
 function qt_find_course_from_feed($target_url) {
     $feed = qt_load_courses_feed();
     $all = is_array($feed['courses'] ?? null) ? $feed['courses'] : [];
@@ -74,6 +104,42 @@ function qt_hd_image($url) {
     return $url;
 }
 
+function qt_parse_time($v) {
+    if (is_numeric($v)) return (int)$v;
+    if (is_string($v)) { $t = strtotime($v); if ($t) return $t; }
+    return 0;
+}
+
+function qt_is_course_active($c) {
+    if (!is_array($c)) return true;
+    if (isset($c['expired']) && $c['expired']) return false;
+    if (isset($c['active']) && !$c['active']) return false;
+    if (isset($c['coupon_status'])) {
+        $st = strtolower((string)$c['coupon_status']);
+        if (!in_array($st, ['active','valid','available','live','working'])) return false;
+    }
+    $keys = ['expires_at','expiry','expires','coupon_expiry','valid_till','end_date','coupon_end','expiry_time'];
+    foreach ($keys as $k) {
+        if (!empty($c[$k])) { $ts = qt_parse_time($c[$k]); if ($ts && time() > $ts) return false; }
+    }
+    return true;
+}
+
+function qt_feed_stats() {
+    $file = __DIR__ . '/courses.json';
+    $feed = qt_load_courses_feed();
+    $courses = is_array($feed['courses'] ?? null) ? $feed['courses'] : [];
+    $active = 0; $latest = file_exists($file) ? filemtime($file) : 0;
+    foreach ($courses as $c) {
+        if (qt_is_course_active($c)) $active++;
+        foreach (['updated_at','published_at','timestamp','scraped_at','date'] as $k) {
+            if (!empty($c[$k])) $latest = max($latest, qt_parse_time($c[$k]));
+        }
+    }
+    if (!$latest) $latest = time();
+    return ['active_count'=>$active, 'updated_ts'=>$latest, 'updated_human'=>qt_human_time($latest)];
+}
+
 function qt_get_related_by_category($category, $exclude_slug = '', $limit = 6) {
     $feed = qt_load_courses_feed();
     $all = is_array($feed['courses'] ?? null) ? $feed['courses'] : [];
@@ -86,9 +152,9 @@ function qt_get_related_by_category($category, $exclude_slug = '', $limit = 6) {
             }
         }
         if ($category) {
-            return isset($c['category']) && strtolower(trim($c['category'])) === strtolower(trim($category));
+            return qt_is_course_active($c) && isset($c['category']) && strtolower(trim($c['category'])) === strtolower(trim($category));
         }
-        return !empty($c['url']);
+        return qt_is_course_active($c) && !empty($c['url']);
     }));
     usort($filtered, function($a, $b) {
         $rb = (float)($b['rating'] ?? 0);
@@ -115,7 +181,7 @@ function qt_get_related_courses($target_url, $limit = 6) {
     // Exclude current course by comparing slug if possible
     $exclude_slug = '';
     $path = parse_url($target_url, PHP_URL_PATH);
-    if (preg_match('/\/course\/([^\/]+)/', (string)$path, $m)) {
+    if (preg_match('/\/course\/([^\/]+)/', $path, $m)) {
         $exclude_slug = strtolower($m[1]);
     }
 
@@ -124,7 +190,7 @@ function qt_get_related_courses($target_url, $limit = 6) {
         if ($exclude_slug && preg_match('/\/course\/([^\/]+)/', parse_url($u, PHP_URL_PATH) ?? '', $mm)) {
             if (strtolower($mm[1]) === $exclude_slug) return false;
         }
-        return !empty($c['url']);
+        return qt_is_course_active($c) && !empty($c['url']);
     }));
 
     // Sort by rating desc, then recent (implicit order), then random small jitter
@@ -208,6 +274,7 @@ function extractCourseInfo($url) {
 
 $course_info = extractCourseInfo($target_url);
 $current_course = qt_find_course_from_feed($target_url);
+$current_active = qt_is_course_active($current_course ?? []);
 // Prefer category-based related from feed
 $exclude_slug = '';
 $path_for_exclude = parse_url($target_url, PHP_URL_PATH);
@@ -305,27 +372,48 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
             background: white;
             padding: 20px 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
         }
         
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
         .logo {
             font-size: 28px;
             font-weight: bold;
             color: #1a202c;
-            margin-bottom: 8px;
+            margin-bottom: 0;
         }
         
         .tagline {
             color: #718096;
             font-size: 16px;
             font-style: italic;
+            margin-left: 16px;
         }
+
+        /* Mobile navigation */
+        .hamburger {
+            width: 38px; height: 34px; border-radius: 8px; border: 1px solid #e2e8f0; display: grid; place-items: center; background: #f8fafc; cursor: pointer;
+        }
+        .hamburger span { width: 20px; height: 2px; background: #111827; display: block; position: relative; }
+        .hamburger span::before, .hamburger span::after { content: ""; position: absolute; left: 0; width: 100%; height: 2px; background: #111827; }
+        .hamburger span::before { top: -6px; }
+        .hamburger span::after { top: 6px; }
+
+        .mobile-menu { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: none; z-index: 1100; }
+        .mobile-menu.open { display: block; }
+        .mobile-drawer { position: absolute; right: 0; top: 0; bottom: 0; width: 80%; max-width: 340px; background: #ffffff; box-shadow: -8px 0 24px rgba(0,0,0,.15); padding: 22px; display: grid; gap: 14px; }
+        .mobile-link { text-decoration: none; color: #111827; font-weight: 700; padding: 10px 12px; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; }
+
+        /* Status bar (bot updated note) */
+        .status-bar { background: #ecfeff; color: #0e7490; border: 1px solid #a5f3fc; border-left: 0; border-right: 0; padding: 10px 20px; font-weight: 700; text-align: center; }
         
         /* Container */
         .container {
@@ -1020,15 +1108,19 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
         
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            .header-content { flex-wrap: wrap; gap: 10px; }
+            .tagline { width: 100%; font-size: 14px; margin-left: 0; text-align: left; opacity: .9; }
             .course-title {
                 font-size: 2rem;
             }
+            .hero-grid { grid-template-columns: 1fr; gap: 16px; }
+            .hero-title { font-size: 1.6rem; }
+            .hero-summary { margin-top: 12px; }
             
             .course-meta {
                 flex-direction: column;
                 gap: 15px;
             }
-            
             .courses-grid {
                 grid-template-columns: 1fr;
             }
@@ -1071,10 +1163,28 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">QuickTrends.in</div>
-            <div class="tagline">Curated Free Udemy Coupons and Courses</div>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <div class="logo">QuickTrends.in</div>
+                <div class="tagline">Curated Free Udemy Coupons and Courses</div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Open Menu"><span></span></button>
         </div>
     </header>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav class="mobile-drawer">
+            <a class="mobile-link" href="index.php">Home</a>
+            <a class="mobile-link" href="courses.php">All Free Courses</a>
+            <a class="mobile-link" href="blog.php">Categories</a>
+            <a class="mobile-link" href="about.php">About</a>
+            <a class="mobile-link" href="contact.php">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Status Bar / Bot note -->
+    <?php $__stats = qt_feed_stats(); ?>
+    <div class="status-bar">Automatically updated by our bot • Only active, non‑expired coupons • <?= (int)($__stats['active_count'] ?? 0) ?> active now • Updated <?= htmlspecialchars($__stats['updated_human'] ?? 'just now') ?>.</div>
     
     <!-- Left Side Ad -->
     <?php $ad_left = getAadsAdCode('300x600', 4); if (!empty($ad_left)): ?>
@@ -1163,8 +1273,13 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
                             <?php if (!empty($current_course['duration'])): ?><li>⏱️ Duration: <?= htmlspecialchars($current_course['duration']) ?></li><?php endif; ?>
                             <?php if (!empty($current_course['lectures'])): ?><li>🎯 Lectures: <?= htmlspecialchars($current_course['lectures']) ?></li><?php endif; ?>
                         </ul>
-                        <a href="step2.php?u=<?= urlencode($target_url) ?>" class="summary-cta" style="margin-top:10px;">Claim Coupon</a>
-                        <a href="courses.php" class="summary-cta secondary">Browse All Free Courses</a>
+                        <?php if ($current_active): ?>
+                            <a href="step2.php?u=<?= urlencode($target_url) ?>" class="summary-cta" style="margin-top:10px;">Claim Coupon</a>
+                            <a href="courses.php" class="summary-cta secondary">Browse All Free Courses</a>
+                        <?php else: ?>
+                            <a href="#" class="summary-cta secondary" style="margin-top:10px; pointer-events:none; opacity:.7;">Coupon Expired</a>
+                            <a href="courses.php" class="summary-cta">See Active Free Courses</a>
+                        <?php endif; ?>
                     </div>
                 </aside>
             </div>
@@ -1374,7 +1489,7 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
             </div>
             <p>&copy; <?= date('Y') ?> QuickTrends.in - Supporting Free Education Worldwide</p>
             <p style="margin-top: 10px; opacity: 0.7; font-size: 14px;">
-                Connecting learners with quality educational content since 2024.
+                Connecting learners with quality educational content since 2025.
             </p>
         </div>
     </footer>
@@ -1466,6 +1581,20 @@ function logDetailedClick($url, $ip, $user_agent, $referrer) {
             // If cookies already accepted, initialize tracking
             if (localStorage.getItem('cookieConsent') === 'accepted') {
                 initializeTracking();
+            }
+
+            // Mobile menu toggle
+            const hamb = document.getElementById('hamburger');
+            const menu = document.getElementById('mobileMenu');
+            if (hamb && menu) {
+                const toggleMenu = (open) => {
+                    menu.classList.toggle('open', open);
+                    menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+                    document.body.style.overflow = open ? 'hidden' : '';
+                };
+                hamb.addEventListener('click', () => toggleMenu(!menu.classList.contains('open')));
+                menu.addEventListener('click', (e) => { if (e.target === menu) toggleMenu(false); });
+                document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleMenu(false); });
             }
         });
         

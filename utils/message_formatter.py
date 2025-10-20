@@ -217,7 +217,7 @@ class MessageFormatter:
         return (
             f"{Config.BOT_LOGO_EMOJI} <b>Free Course Alert!</b>\n\n"
             f"<b>{self._clean_text(title)}</b>\n"
-            f"💯✨ <b>100% FREE</b> ✨\n\n"
+            f"✨ <b>💯FREE</b> ✨\n\n"
             f"🔗 <b>Enroll Link➤</b> {url}\n\n"
             f"🧭 <b>Explore our channels</b>\n"
             f"• 🛡️ <b><a href=\"https://t.me/+Te_QWfS6W99mNjA1\">Hacking</a></b> | • 🧠 <b><a href=\"https://t.me/+5AF4k2itls1iYTM9\">Free AI Tools</a></b>\n"
