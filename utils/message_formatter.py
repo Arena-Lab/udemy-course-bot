@@ -219,8 +219,8 @@ class MessageFormatter:
             f"✨ <b>💯FREE</b> ✨\n\n"
             f"🔗 <b>Enroll Link➤</b> {url}\n\n"
             f"🧭 <b>Explore our channels</b>\n"
-            f"• 🛡️ <b><a href=\"https://t.me/+Te_QWfS6W99mNjA1\">Hacking</a></b> | • 🧠 <b><a href=\"https://t.me/+5AF4k2itls1iYTM9\">Free AI Tools</a></b>\n"
-            f"• ⚡ <b><a href=\"https://t.me/+6tALVTxVuYMzNjdl\">Quick Deals</a></b> | • 📣 <b><a href=\"https://t.me/+RZf4mx2BiZhhMDdl\">Marketing Bot</a></b>\n"
-            f"• 🤖 <b><a href=\"https://t.me/AlienxSaver\">Free Bots</a></b> | • 💰 <b><a href=\"https://t.me/+kzHBAvWrS5hiOTg1\">Earning Channel</a></b>\n\n"
+            f"🛡️ <b><a href=\"https://t.me/+Te_QWfS6W99mNjA1\">Hacking</a></b> | 🧠 <b><a href=\"https://t.me/+5AF4k2itls1iYTM9\">Free AI Tools</a></b>\n"
+            f"⚡ <b><a href=\"https://t.me/+6tALVTxVuYMzNjdl\">Quick Deals</a></b> | 📣 <b><a href=\"https://t.me/+RZf4mx2BiZhhMDdl\">Marketing Bot</a></b>\n"
+            f"🤖 <b><a href=\"https://t.me/AlienxSaver\">Free Bots</a></b> | 💰 <b><a href=\"https://t.me/+kzHBAvWrS5hiOTg1\">Earning Channel</a></b>\n\n"
             f"👥 <b>Invite friends:</b> 👉 <a href=\"https://t.me/udemyzap\">@udemyzap</a>"
         ).strip()
