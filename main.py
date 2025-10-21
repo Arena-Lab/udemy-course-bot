@@ -22,7 +22,6 @@ from utils.message_formatter import MessageFormatter
 from utils.scraper_manager import ScraperManager
 from utils.logger import setup_logging
 from utils.rate_limiter import TelegramRateLimiter
-from utils.exporter import export_active_courses_json
 
 # Setup logging
 logger = setup_logging()
@@ -515,11 +514,7 @@ This bot automatically finds and posts free Udemy courses to your channel.
                 await asyncio.to_thread(self._persist_env, k, v)
                 # Apply selected keys at runtime (no restart):
                 try:
-                    if k in {"QUICKTRENDS_BASE_URL"}:
-                        setattr(Config, k, v)
-                    elif k in {"DIRECT_LINKS"}:
-                        setattr(Config, k, str(v).strip().lower() == 'true')
-                    elif k in {"DISCUDEMY_FRESH_PAGES", "DISCUDEMY_FRESH_SLICE", "POSTS_PER_RUN", "SCRAPE_JOB_INTERVAL", "POST_JOB_INTERVAL"}:
+                    if k in {"DISCUDEMY_FRESH_PAGES", "DISCUDEMY_FRESH_SLICE", "POSTS_PER_RUN", "SCRAPE_JOB_INTERVAL", "POST_JOB_INTERVAL"}:
                         setattr(Config, k, int(v))
                         if k in {"SCRAPE_JOB_INTERVAL", "POST_JOB_INTERVAL"}:
                             # Reschedule with new intervals without manual restart
@@ -686,12 +681,6 @@ This bot automatically finds and posts free Udemy courses to your channel.
             
             # Cleanup expired courses
             self.db.cleanup_expired_courses()
-            # Export active courses to website JSON feed
-            try:
-                export_active_courses_json(self.db, website_dir="quicktrends_files", filename="courses.json", limit=1000)
-                logger.info("Exported active courses to website JSON")
-            except Exception as _e:
-                logger.debug(f"Website export failed: {_e}")
             
             return new_courses
             
@@ -727,12 +716,6 @@ This bot automatically finds and posts free Udemy courses to your channel.
             # Adjust stats and cleanup
             self._adjust_scraper_statistics(courses, new_courses)
             self.db.cleanup_expired_courses()
-            # Export active courses to website JSON feed
-            try:
-                export_active_courses_json(self.db, website_dir="quicktrends_files", filename="courses.json", limit=1000)
-                logger.info("[BG] Exported active courses to website JSON")
-            except Exception as _e:
-                logger.debug(f"[BG] Website export failed: {_e}")
             # Optional: write top-level per-run summary diagnostics
             try:
                 if getattr(Config, 'DIAG_ENABLE_RUN_SUMMARY', False):

@@ -87,9 +87,6 @@ class Config:
     
     # Advanced Settings (removed unused webhook/analytics toggles)
     
-    # QuickTrends site base URL (switch to http://127.0.0.1:8000 for local testing)
-    QUICKTRENDS_BASE_URL = os.getenv('QUICKTRENDS_BASE_URL', 'https://quicktrends.in')
-    DIRECT_LINKS = os.getenv('DIRECT_LINKS', 'true').lower() == 'true'
     
     @classmethod
     def validate_config(cls):

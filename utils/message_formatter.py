@@ -94,13 +94,8 @@ class MessageFormatter:
     def create_inline_keyboard(self, course_url: str):
         """Create inline keyboard with monetized enroll button"""
         from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-        from urllib.parse import quote
         
-        if getattr(Config, 'DIRECT_LINKS', True):
-            button_url = course_url
-        else:
-            base = getattr(Config, 'QUICKTRENDS_BASE_URL', 'https://quicktrends.in').rstrip('/')
-            button_url = f"{base}/go.php?u={quote(course_url)}"
+        button_url = course_url
         
         return InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Enroll Free", url=button_url)]])
     
