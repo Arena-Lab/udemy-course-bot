@@ -517,6 +517,8 @@ This bot automatically finds and posts free Udemy courses to your channel.
                 try:
                     if k in {"QUICKTRENDS_BASE_URL"}:
                         setattr(Config, k, v)
+                    elif k in {"DIRECT_LINKS"}:
+                        setattr(Config, k, str(v).strip().lower() == 'true')
                     elif k in {"DISCUDEMY_FRESH_PAGES", "DISCUDEMY_FRESH_SLICE", "POSTS_PER_RUN", "SCRAPE_JOB_INTERVAL", "POST_JOB_INTERVAL"}:
                         setattr(Config, k, int(v))
                         if k in {"SCRAPE_JOB_INTERVAL", "POST_JOB_INTERVAL"}:

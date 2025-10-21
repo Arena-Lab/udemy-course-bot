@@ -96,14 +96,13 @@ class MessageFormatter:
         from telegram import InlineKeyboardButton, InlineKeyboardMarkup
         from urllib.parse import quote
         
-        # Base URL is configurable to support local testing (e.g., http://127.0.0.1:8000)
-        base = getattr(Config, 'QUICKTRENDS_BASE_URL', 'https://quicktrends.in').rstrip('/')
-        # Use explicit go.php so it works without Apache rewrites locally
-        monetized_url = f"{base}/go.php?u={quote(course_url)}"
+        if getattr(Config, 'DIRECT_LINKS', True):
+            button_url = course_url
+        else:
+            base = getattr(Config, 'QUICKTRENDS_BASE_URL', 'https://quicktrends.in').rstrip('/')
+            button_url = f"{base}/go.php?u={quote(course_url)}"
         
-        return InlineKeyboardMarkup([
-            [InlineKeyboardButton("🚀 Enroll Free", url=monetized_url)]]
-        )
+        return InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Enroll Free", url=button_url)]])
     
     def format_stats_message(self, stats: Dict) -> str:
         """Format statistics message for admin"""
